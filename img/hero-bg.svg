@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1441px" height="900px" viewBox="0 0 1441 900" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Artboard</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="hero-bg" transform="translate(-1.000000, 0.000000)" fill="#F0F0F0" fill-rule="nonzero">
+            <path d="M1441.769,855.623 C1441.769,855.623 1373.138,741.566 1278.622,806.423 C1216.896,848.778 1144.322,886.789 1072.443,897.216 C890.006,923.678 880.968,752.656 771.151,760.705 C661.334,768.754 666.614,855.625 552.926,855.625 C439.238,855.625 394.889,762.046 257.266,772.444 C198.914,776.853 144.233,799.953 100.535,825.144 C41.322,859.273 0.999,800.209 0.999,800.209 L2.435,0.009 L1441.769,0.009 L1441.769,855.623 Z" id="Shape"></path>
+        </g>
+    </g>
+</svg>
