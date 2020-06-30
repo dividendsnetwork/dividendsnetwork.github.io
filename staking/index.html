@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<title>Dividends Network | SMART Staking</title>
+	<meta name="description" content="Dividends Network is an Ethereum based dapp that provides users with an opportunity to earn potential rewards from participating in games." />
+	<meta name="keywords" content="Dividends Network, Divs, PoWH, P3D, ETH, Ethereum, dapp, pyramid" />
+	<meta name="author" content="dividends.network"/>
+	
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="favicon.ico">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+	
+	<!-- Data table CSS -->
+	<link href="https://dividends.network/vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
+	
+	<!-- Toast CSS -->
+	<link href="https://dividends.network/vendors/bower_components/jquery-toast-plugin/dist/jquery.toast.min.css" rel="stylesheet" type="text/css">
+	
+	<!-- Morris Charts CSS -->
+    <link href="https://dividends.network/vendors/bower_components/morris.js/morris.css" rel="stylesheet" type="text/css"/>
+	
+	<!-- bootstrap-select CSS -->
+	<link href="https://dividends.network/vendors/bower_components/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet" type="text/css"/>	
+	
+	
+	<!-- vector map CSS -->
+	<link href="https://dividends.network/vendors/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" type="text/css"/>
+	
+	<!-- Custom CSS -->
+	<link href="https://dividends.network/dist/css/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+<style>
+/* counter 
+------------------------------------------ */
+#counter {
+	width: 90%;
+	color: black;
+	text-align: center;
+	margin: 18px auto 0;
+}
+
+#counter span {
+	font: 32px/1em "montserrat-bold", sans-serif;
+	display: block;
+	padding: 12px 0 30px;
+	min-width: 25%;
+	float: left;
+}
+
+#counter span em {
+	font: 11px/18px "montserrat-regular", sans-serif;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	margin-top: 3px;
+	display: block;
+	color: rgba(0, 0, 0, 0.6);
+}
+
+@media only screen and (max-width:900px) {
+	#counter {
+		width: 92%;
+	}
+
+	#counter span {
+		font: 58px/1em "montserrat-bold", sans-serif;
+	}
+
+}
+
+@media only screen and (max-width:768px) {
+	#counter {
+		width: 100%;
+	}
+
+	#counter span {
+		font: 52px/1em "montserrat-bold", sans-serif;
+	}
+
+}
+
+@media only screen and (max-width:600px) {
+	#counter {
+		margin-bottom: 24px;
+	}
+
+	#counter span {
+		font: 48px/1em "montserrat-bold", sans-serif;
+	}
+
+}
+
+@media only screen and (max-width:500px) {
+	#counter {
+		margin-bottom: 12px;
+	}
+
+	#counter span {
+		font: 37px/1em "montserrat-bold", sans-serif;
+	}
+
+	#counter span em {
+		font: 9px/18px "montserrat-regular", sans-serif;
+		letter-spacing: 1.5px;
+	}
+
+}
+
+@media only screen and (max-width:400px) {
+	#counter span {
+		font: 31px/1em "montserrat-bold", sans-serif;
+	}
+
+	#counter span em {
+		font: 8px/18px "montserrat-regular", sans-serif;
+		letter-spacing: 1px;
+	}
+
+}
+</style>
+
+<!-- Analytics-->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-71477115-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-71477115-1');
+</script>
+
+<!--End Analytics-->
+
+</head>
+
+<script type="text/javascript">
+      function getCookie(name) {
+            var dc = document.cookie;
+            var prefix = name + "=";
+            var begin = dc.indexOf("; " + prefix);
+
+        if (begin == -1) {
+                begin = dc.indexOf(prefix);
+                if (begin != 0) return null;
+            }
+            else
+            {
+                begin += 2;
+                var end = document.cookie.indexOf(";", begin);
+                if (end == -1) {
+                end = dc.length;
+              }
+            }
+
+        return decodeURI(dc.substring(begin + prefix.length, end));
+      }
+
+      var url_string = window.location.href;
+      var url = new URL(url_string);
+      var theCookie = "masternode=" + url.searchParams.get("masternode");
+
+      if (url.searchParams.get("masternode") !== null) {
+        var toSet = "masternode=" + url.searchParams.get("masternode");
+        document.cookie=theCookie;
+      } else {
+
+        var refCookie = getCookie("masternode");
+
+        if (refCookie === null) {
+          console.log("Ref cookie was null. Setting to default.");
+          document.cookie = "masternode=0x0x0000000000000000000000000000000000000000";
+        } else {
+          // do nothing if the cookie is already set and there is no new mnode link
+        }
+      }
+</script>
+
+<body>
+	<!-- Preloader -->
+	<div class="preloader-it">
+		<div class="la-anim-1"></div>
+	</div>
+	<!-- /Preloader -->
+    <div class="wrapper box-layout theme-2-active navbar-top-navyblue horizontal-nav">
+		<!-- Top Menu Items -->
+			<nav class="navbar navbar-inverse navbar-fixed-top">
+				<div class="mobile-only-brand pull-left">
+					<div class="nav-header pull-left">
+						<div class="logo-wrap">
+							<a href="index.html">
+								<!--<img class="brand-img" src="https://dividends.network/assets/images/logo.png" alt="brand"/>-->
+								<span class="brand-text">Smart Lending</span>
+							</a>
+						</div>
+					</div>	
+					
+						
+				</div>	
+			</nav>
+
+			<!-- /Top Menu Items -->
+			
+			<!-- Left Sidebar Menu -->
+			<div class="fixed-sidebar-left">
+				<ul class="nav navbar-nav side-nav nicescroll-bar">
+					<li class="navigation-header">
+						<span>Main</span> 
+						<hr/>
+					</li>
+					<li>
+						<a class="active" href="/"><div class="pull-left"><i class="fas fa-tachometer-alt"></i><span class="right-nav-text"> Dashboard</span></div><div class="pull-right"><i class="ti-angle-down"></i></div><div class="clearfix"></div></a>
+						
+					</li>
+					<li>
+						<a href="https://dividends.network/dex"><div class="pull-left"><i class="fas fa-chart-line"></i><span class="right-nav-text"> Exchange Game</span></div><div class="pull-right"><i class="ti-angle-down"></i></div><div class="clearfix"></div></a>
+						
+					</li>
+
+<li>
+						<a href="https://dividends.network/staking"><div class="pull-left"><i class="fas fa-hand-holding-usd"></i><span class="right-nav-text"> Staking</span></div><div class="pull-right"><i class="ti-angle-down"></i></div><div class="clearfix"></div></a>
+						
+					</li>
+					<li>
+						<a href="https://dividends.network/lotto"><div class="pull-left"><i class="fab fa-buromobelexperte"></i><span class="right-nav-text"> Lotto Game </span></div><div class="pull-right"><i class="ti-angle-down"></i></div><div class="clearfix"></div></a>
+						
+							
+								
+					</li>
+					
+					<li>
+						<a href="#" target="_blank"><div class="pull-left"><i class="fab fa-discord"></i><span class="right-nav-text"> Discord</span></div><div class="pull-right"><i class="ti-angle-down "></i></div><div class="clearfix"></div></a>
+						
+					</li>
+					<li>
+						<a href="#" target="_blank"><div class="pull-left"><i class="fab fa-telegram-plane"></i><span class="right-nav-text"> Telegram</span></div><div class="pull-right"><i class="ti-angle-down "></i></div><div class="clearfix"></div></a>
+						
+					<li>
+						<a href="#"><div class="pull-left"><i class="fab fa-weixin"></i><span class="right-nav-text"> WeChat</span></div><div class="pull-right"><i class="ti-angle-down "></i></div><div class="clearfix"></div></a>
+						
+							</li>
+							
+					<li>
+						<a href="tokengraph.html"><div class="pull-left"><i class="fas fa-chart-line"></i> <span class="right-nav-text">Token Graph</span></div><div class="clearfix"></div></a>
+					</li>
+				</ul>
+			</div>
+			<!-- /Left Sidebar Menu -->
+			
+			<!-- Masternode Script -->
+<script>
+    function whenAvailable(name, callback) {
+        var interval = 10;
+        window.setTimeout(function() {
+                if (window[name]) {
+                         callback(window[name]);
+                } else {
+                         window.setTimeout(arguments.callee, interval);
+                }
+        }, interval);
+  }
+
+whenAvailable("web3js", function(){
+    if (web3js.eth.accounts[0] !== null) {
+        var element = "<br/><b><a href='/?masternode="+ currentAddress + "'>https://dividends.network/dex?masternode=" + currentAddress + "</a></b>";
+        $("#quoteDisplay").append(element);
+      }
+});
+</script>
+				
+			
+
+        <!-- Main Content -->
+		<div class="page-wrapper">
+        
+            <div class="container-fluid pt-30">
+
+<!-- Row Language Select-->
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="panel panel-default card-view">
+								<div class="panel-heading">
+									<div class="pull-left">
+										<h6 class="panel-title txt-dark">Select Your Language</h6> 
+
+									</div>
+<div class="button-list mt-25"><!-- GTranslate: https://gtranslate.io/ -->
+<a href="#" onclick="doGTranslate('en|af');return false;" title="Afrikaans" class="glink nturl notranslate"><img src="flags/af.png" height="24" width="24" alt="Afrikaans" /></a><a href="#" onclick="doGTranslate('en|sq');return false;" title="Albanian" class="glink nturl notranslate"><img src="flags/sq.png" height="24" width="24" alt="Albanian" /></a><a href="#" onclick="doGTranslate('en|ar');return false;" title="Arabic" class="glink nturl notranslate"><img src="flags/ar.png" height="24" width="24" alt="Arabic" /></a><a href="#" onclick="doGTranslate('en|az');return false;" title="Azerbaijani" class="glink nturl notranslate"><img src="flags/az.png" height="24" width="24" alt="Azerbaijani" /></a><a href="#" onclick="doGTranslate('en|bs');return false;" title="Bosnian" class="glink nturl notranslate"><img src="flags/bs.png" height="24" width="24" alt="Bosnian" /></a><a href="#" onclick="doGTranslate('en|zh-CN');return false;" title="Chinese (Simplified)" class="glink nturl notranslate"><img src="flags/zh-CN.png" height="24" width="24" alt="Chinese (Simplified)" /></a><a href="#" onclick="doGTranslate('en|en');return false;" title="English" class="glink nturl notranslate"><img src="flags/en.png" height="24" width="24" alt="English" /></a><a href="#" onclick="doGTranslate('en|tl');return false;" title="Filipino" class="glink nturl notranslate"><img src="flags/tl.png" height="24" width="24" alt="Filipino" /></a><a href="#" onclick="doGTranslate('en|fr');return false;" title="French" class="glink nturl notranslate"><img src="flags/fr.png" height="24" width="24" alt="French" /></a><a href="#" onclick="doGTranslate('en|de');return false;" title="German" class="glink nturl notranslate"><img src="flags/de.png" height="24" width="24" alt="German" /></a><a href="#" onclick="doGTranslate('en|el');return false;" title="Greek" class="glink nturl notranslate"><img src="flags/el.png" height="24" width="24" alt="Greek" /></a><a href="#" onclick="doGTranslate('en|iw');return false;" title="Hebrew" class="glink nturl notranslate"><img src="flags/iw.png" height="24" width="24" alt="Hebrew" /></a><a href="#" onclick="doGTranslate('en|hi');return false;" title="Hindi" class="glink nturl notranslate"><img src="flags/hi.png" height="24" width="24" alt="Hindi" /></a><a href="#" onclick="doGTranslate('en|hu');return false;" title="Hungarian" class="glink nturl notranslate"><img src="flags/hu.png" height="24" width="24" alt="Hungarian" /></a><a href="#" onclick="doGTranslate('en|id');return false;" title="Indonesian" class="glink nturl notranslate"><img src="flags/id.png" height="24" width="24" alt="Indonesian" /></a><a href="#" onclick="doGTranslate('en|ga');return false;" title="Irish" class="glink nturl notranslate"><img src="flags/ga.png" height="24" width="24" alt="Irish" /></a><a href="#" onclick="doGTranslate('en|it');return false;" title="Italian" class="glink nturl notranslate"><img src="flags/it.png" height="24" width="24" alt="Italian" /></a><a href="#" onclick="doGTranslate('en|ja');return false;" title="Japanese" class="glink nturl notranslate"><img src="flags/ja.png" height="24" width="24" alt="Japanese" /></a><a href="#" onclick="doGTranslate('en|ko');return false;" title="Korean" class="glink nturl notranslate"><img src="flags/ko.png" height="24" width="24" alt="Korean" /></a><a href="#" onclick="doGTranslate('en|ku');return false;" title="Kurdish (Kurmanji)" class="glink nturl notranslate"><img src="flags/ku.png" height="24" width="24" alt="Kurdish (Kurmanji)" /></a><a href="#" onclick="doGTranslate('en|la');return false;" title="Latin" class="glink nturl notranslate"><img src="flags/la.png" height="24" width="24" alt="Latin" /></a><a href="#" onclick="doGTranslate('en|lt');return false;" title="Lithuanian" class="glink nturl notranslate"><img src="flags/lt.png" height="24" width="24" alt="Lithuanian" /></a><a href="#" onclick="doGTranslate('en|mn');return false;" title="Mongolian" class="glink nturl notranslate"><img src="flags/mn.png" height="24" width="24" alt="Mongolian" /></a><a href="#" onclick="doGTranslate('en|pl');return false;" title="Polish" class="glink nturl notranslate"><img src="flags/pl.png" height="24" width="24" alt="Polish" /></a><a href="#" onclick="doGTranslate('en|pt');return false;" title="Portuguese" class="glink nturl notranslate"><img src="flags/pt.png" height="24" width="24" alt="Portuguese" /></a><a href="#" onclick="doGTranslate('en|ro');return false;" title="Romanian" class="glink nturl notranslate"><img src="flags/ro.png" height="24" width="24" alt="Romanian" /></a><a href="#" onclick="doGTranslate('en|ru');return false;" title="Russian" class="glink nturl notranslate"><img src="flags/ru.png" height="24" width="24" alt="Russian" /></a><a href="#" onclick="doGTranslate('en|es');return false;" title="Spanish" class="glink nturl notranslate"><img src="flags/es.png" height="24" width="24" alt="Spanish" /></a><a href="#" onclick="doGTranslate('en|sv');return false;" title="Swedish" class="glink nturl notranslate"><img src="flags/sv.png" height="24" width="24" alt="Swedish" /></a><a href="#" onclick="doGTranslate('en|th');return false;" title="Thai" class="glink nturl notranslate"><img src="flags/th.png" height="24" width="24" alt="Thai" /></a><a href="#" onclick="doGTranslate('en|tr');return false;" title="Turkish" class="glink nturl notranslate"><img src="flags/tr.png" height="24" width="24" alt="Turkish" /></a><a href="#" onclick="doGTranslate('en|vi');return false;" title="Vietnamese" class="glink nturl notranslate"><img src="flags/vi.png" height="24" width="24" alt="Vietnamese" /></a><style type="text/css">
+	#goog-gt-tt {display:none !important;}
+	.goog-te-banner-frame {display:none !important;}
+	.goog-te-menu-value:hover {text-decoration:none !important;}
+	.goog-text-highlight {background-color:transparent !important;box-shadow:none !important;}
+	body {top:0 !important;}
+	#google_translate_element2 {display:none!important;}
+	</style>
+
+	<div id="google_translate_element2"></div>
+	<script type="text/javascript">
+	function googleTranslateElementInit2() {new google.translate.TranslateElement({pageLanguage: 'en',autoDisplay: false}, 'google_translate_element2');}
+	</script><script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit2"></script>
+	
+	
+	<script type="text/javascript">
+	function GTranslateGetCurrentLang() {var keyValue = document['cookie'].match('(^|;) ?googtrans=([^;]*)(;|$)');return keyValue ? keyValue[2].split('/')[2] : null;}
+	function GTranslateFireEvent(element,event){try{if(document.createEventObject){var evt=document.createEventObject();element.fireEvent('on'+event,evt)}else{var evt=document.createEvent('HTMLEvents');evt.initEvent(event,true,true);element.dispatchEvent(evt)}}catch(e){}}
+	function doGTranslate(lang_pair){if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];if(GTranslateGetCurrentLang() == null && lang == lang_pair.split('|')[0])return;if(typeof ga!='undefined'){ga('send', 'event', 'GTranslate', lang, location.hostname+location.pathname+location.search);}else{if(typeof _gaq!='undefined')_gaq.push(['_trackEvent', 'GTranslate', lang, location.hostname+location.pathname+location.search]);}var teCombo;var sel=document.getElementsByTagName('select');for(var i=0;i<sel.length;i++)if(/goog-te-combo/.test(sel[i].className)){teCombo=sel[i];break;}if(document.getElementById('google_translate_element2')==null||document.getElementById('google_translate_element2').innerHTML.length==0||teCombo.length==0||teCombo.innerHTML.length==0){setTimeout(function(){doGTranslate(lang_pair)},500)}else{teCombo.value=lang;GTranslateFireEvent(teCombo,'change');GTranslateFireEvent(teCombo,'change')}}
+	</script></div>
+							</div></div>
+						</div>
+						
+
+
+					
+
+<div class="row">
+						<div class="col-sm-6">
+							<div class="panel panel-default card-view">
+								<div class="panel-heading">
+									<div class="pull-left">
+										<h6 class="panel-title txt-dark">Need Tokens? Get Started Here:</h6> 
+
+									</div>
+<div><a href="https://dividends.network/dex" target="_blank" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Buy DIVS Tokens</a></div>
+							</div></div>
+						</div>
+					</div>	
+
+					<!-- /Row -->
+        
+        <!-- Row Position Cards-->
+				<div class="row">
+					<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+						<div class="panel panel-default card-view">
+							<div class="panel-heading">
+								<div class="center">
+									<h6 class="panel-title txt-dark">Whale Card</h6>
+								</div>
+								
+								<div class="clearfix"></div>
+							</div>
+							<div  id="collapse_1" class="panel-wrapper collapse in">
+								<div  class="panel-body">
+									<div class="form-wrap">
+										
+											<!-- form-group -->
+											<ul class="flex-stat flex-stat-2 mt-20">
+                                        <li>
+											<span class="block"><i class="fas fa-hand-holding-usd fa-w-17 fa-3x"></i></span>
+											
+											<span class="block"></span>
+											
+										</li>
+                                        
+										<li>
+											<span class="block"><h2><span id='goldPercent'>-</span>%</h2></span>
+											<span class="block">of all deposits</span>
+											
+										</li>
+										<li>
+											<span class="block"><h2><span id='goldHalfLife'>-</span></h2></span>
+											<span class="block">Day Half Life</span>
+											
+										</li>
+										
+									</ul>
+                                    <div class="clearfix"></div>
+                                    <hr>
+<p>Note: 4% is earn on DIVS deposits into Smart Lending</p>
+											
+											<div><button class="btn btn-success btn-block" id="inheritGold">Buy Position for <span id='goldCost'>-</span> DIVS</button></div>
+										</form>
+									</div>
+								
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+						<div class="panel panel-default card-view">
+							<div class="panel-heading">
+								<div class="center">
+									<h6 class="panel-title txt-dark">Shark Card</h6>
+								</div>
+								
+								<div class="clearfix"></div>
+							</div>
+							<div  id="collapse_1" class="panel-wrapper collapse in">
+								<div  class="panel-body">
+									<div class="form-wrap">
+										<form onsubmit="return false;">
+											<!-- form-group -->
+											<ul class="flex-stat flex-stat-2 mt-20">
+                                        <li>
+											<span class="block"><i class="fas fa-hand-holding-usd fa-w-17 fa-3x"></i></span>
+											
+											<span class="block"></span>
+											
+										</li>
+                                        
+										<li>
+											<span class="block"><h2><span id='silverPercent'>-</span>%</h2></span>
+											<span class="block">of all deposits</span>
+											
+										</li>
+										<li>
+											<span class="block"><h2><span id='silverHalfLife'>-</span></h2></span>
+											<span class="block">Day Half Life</span>
+											
+										</li>
+										
+									</ul>
+                                    <div class="clearfix"></div>
+                                    <hr>
+<p>Note: 2% is earn on DIVS deposits into Smart Lending</p>
+											<!-- /form-group -->
+											<div><button class="btn btn-success btn-block" id="inheritSilver">Buy Position for <span id='silverCost'>-</span> DIVS</button></div>
+										</form>
+									</div>
+								
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+						<div class="panel panel-default card-view">
+							<div class="panel-heading">
+								<div class="center">
+									<h6 class="panel-title txt-dark">Piranha Card</h6>
+								</div>
+								
+								<div class="clearfix"></div>
+							</div>
+							<div  id="collapse_1" class="panel-wrapper collapse in">
+								<div  class="panel-body">
+									<div class="form-wrap">
+										<form onsubmit="return false;">
+											<ul class="flex-stat flex-stat-2 mt-20">
+                                        <li>
+											<span class="block"><i class="fas fa-hand-holding-usd fa-w-17 fa-3x"></i></span>
+											
+											<span class="block"></span>
+											
+										</li>
+                                        
+										<li>
+											<span class="block"><h2><span id='bronzePercent'>-</span>%</h2></span>
+											<span class="block">of all deposits</span>
+											
+										</li>
+										<li>
+											<span class="block"><h2><span id='bronzeHalfLife'>-</span></h2></span>
+											<span class="block">Day Half Life</span>
+											
+										</li>
+										
+									</ul>
+                                    <div class="clearfix"></div>
+                                    <hr>
+<p>Note: 1% is earn on DIVS deposits into Smart Lending</p>
+											
+											<div><button class="btn btn-success btn-block" id="inheritBronze">Buy Position for <span id='bronzeCost'>-</span> DIVS</button></div>
+										</form>
+									</div>
+								
+								</div>
+							</div>
+						</div></div></div>
+                        <!-- End Investor Cards Row -->
+
+<!-- Row Global Stats-->
+				<div class="row">
+					<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+						<div class="panel panel-default card-view pa-0">
+							<div class="panel-wrapper collapse in">
+								<div class="panel-body pa-0">
+									<div class="sm-data-box">
+										<div class="container-fluid">
+											<div class="row">
+												<div class="col-xs-6 text-center pl-0 pr-0 data-wrap-left">
+													<span class="txt-dark block counter"><span id="myDIVS"></span></span>
+													<span class="capitalize-font block">My Token Balance</span>
+												</div>
+												<div class="col-xs-6 text-center  pl-0 pr-0 data-wrap-right">
+													<i class="fas fa-coins fa-w-16 fa-5x txt-primary"></i>
+												</div>
+											</div>
+											<div class="progress-anim">
+												<div class="progress">
+													<div class="progress-bar progress-bar-info
+													wow animated progress-animated" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+						<div class="panel panel-default card-view pa-0">
+							<div class="panel-wrapper collapse in">
+								<div class="panel-body pa-0">
+									<div class="sm-data-box">
+										<div class="container-fluid">
+											<div class="row">
+												<div class="col-xs-6 text-center pl-0 pr-0 data-wrap-left">
+													<span class="txt-dark block counter"><span id="activeAmount"></span></span>
+													<span class="capitalize-font block">My Active Deposit</span>
+												</div>
+												<div class="col-xs-6 text-center  pl-0 pr-0 data-wrap-right">
+													<i class="fas fa-coins fa-w-16 fa-5x txt-primary"></i>
+												</div>
+											</div>
+											<div class="progress-anim">
+												<div class="progress">
+													<div class="progress-bar progress-bar-info
+													wow animated progress-animated" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+						<div class="panel panel-default card-view pa-0">
+							<div class="panel-wrapper collapse in">
+								<div class="panel-body pa-0">
+									<div class="sm-data-box">
+										<div class="container-fluid">
+											<div class="row">
+												<div class="col-xs-6 text-center pl-0 pr-0 data-wrap-left">
+													<span class="txt-dark block counter"><span id="balanceDIVS"></span></span>
+													<span class="capitalize-font block">Global Smart Lending Balance</span>
+												</div>
+												<div class="col-xs-6 text-center  pl-0 pr-0 data-wrap-right">
+													<i class="fas fa-globe-asia fa-w-16 fa-5x txt-primary"></i>
+												</div>
+											</div>
+											<div class="progress-anim">
+												<div class="progress">
+													<div class="progress-bar progress-bar-warning
+													wow animated progress-animated" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+						<div class="panel panel-default card-view pa-0">
+							<div class="panel-wrapper collapse in">
+								<div class="panel-body pa-0">
+									<div class="sm-data-box">
+										<div class="container-fluid">
+											<div class="row">
+												<div class="col-xs-6 text-center pl-0 pr-0 data-wrap-left">
+													<span class="txt-dark block counter"><span id="surplusDIVSPercent"></span></span>
+													<span class="capitalize-font block">Global Smart Lending Surplus</span>
+												</div>
+												<div class="col-xs-6 text-center  pl-0 pr-0 data-wrap-right">
+													<i class="fas fa-university fa-w-16 fa-5x txt-primary"></i>
+												</div>
+											</div>
+											<div class="progress-anim">
+												<div class="progress">
+													<div class="progress-bar progress-bar-danger
+													wow animated progress-animated" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div></div>
+<!-- End Global Stats Area -->
+
+<!-- Row Deposit-->
+				<div class="row">
+					<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+						<div class="panel panel-default card-view">
+							<div class="panel-heading">
+								<div class="center">
+									<h6 class="panel-title txt-dark">DEPOSIT DIVS TOKENS (Earn 1.33% Daily / 39.9% Monthly)</h6>
+								</div>
+								
+								<div class="clearfix"></div>
+							</div>
+							<div  id="collapse_1" class="panel-wrapper collapse in">
+								<div  class="panel-body">
+									<div class="form-wrap">
+										
+											<!-- form-group -->
+											<div class="form-group mb-20">
+												<div class="input-group mb-15"> <span class="input-group-addon"><i class="fas fa-coins"></i></span>
+													<input id="investmentAmount" type="number" placeholder='350 DIVS' step=1 min=350 class="form-control">
+													<div class="input-group-btn">
+														<button type="button" class="btn btn-default btn-outline">DIVS</button>
+														
+													</div>
+												</div>
+											</div>
+											
+											<!-- /form-group -->
+<p>Note: If you have dividends on the exchange, they will auto-withdraw to your wallet when you deposit DIVS Tokens into Smart Lending.</p>
+
+											
+											<button id="investDIVS" class="btn btn-success btn-block mb-10">DEPOSIT DIVS TOKENS</button>
+										</form>
+									</div>
+								
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+						<div class="panel panel-default card-view">
+							<div class="panel-heading">
+								<div class="center">
+									<h6 class="panel-title txt-dark"><i class="fas fa-info-circle"></i> INFO: (DEPOSIT DIVS)</h6>
+								</div>
+								
+								<div class="clearfix"></div>
+							</div>
+							<div  id="collapse_1" class="panel-wrapper collapse in">
+								<div  class="panel-body">
+									<div class="form-wrap">
+
+<p>Earn 1.33% everyday through the technology of the A.I. of our smart contract. Smart lending is designed to earn income for DIVS token holders forever! No humans can stop this contract or your earnings! Using Smart Lending is simple, just buy DIVS Tokens on the exchange and deposit them here in Smart Lending to start earning 39.9% per month with no mysterious trading bot needed. Your profit can be withdrawn at anytime with no fee and your profit is accrued by the second in your profit wallet!<br><i>Minimum deposit is 350 DIVS</i></p>
+										<!--<p class='info'>Deposit your DIVS Tokens (DIVS) here! You will earn 1.33% Daily / 39.9% monthly of your deposit everyday in profit as long as you do not withdraw your deposit (exit) the platform! Your profit can be withdrawn at anytime with no fee (aside from the cost of gas for the transaction) and your profit is accrued by the second in your profit wallet!<br><i>Minimum deposit is 350 DIVS</i></p>-->
+										</form>
+									</div>
+								
+								</div>
+							</div>
+						</div>
+					</div></div>
+					
+<!-- End Deposit Area -->
+
+<!-- Row Profit-->
+				<div class="row">
+					<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+						<div class="panel panel-default card-view">
+							<div class="panel-heading">
+								<div class="center">
+									<h6 class="panel-title txt-dark">PROFIT WALLET</h6>
+								</div>
+								
+								<div class="clearfix"></div>
+							</div>
+							<div  id="collapse_1" class="panel-wrapper collapse in">
+								<div  class="panel-body">
+									<div class="form-wrap">
+										
+											<span class="block"><h2><span id='profitAmount'>0.000</span> DIVS</h2></span>
+                                                <div class="clearfix"></div>
+                                                <hr>
+											
+												
+											</div>
+											
+											<!-- /form-group -->
+
+											
+											<button id="reinvestProfit" class="btn btn-success btn-block mb-10">REINVEST DIVS PROFITS</button>
+<button id="withdrawProfit" class="btn btn-danger btn-block mb-10">WITHDRAW DIVS PROFITS</button>
+										</form>
+									</div>
+								
+								</div>
+							</div>
+						</div>
+					
+					<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+						<div class="panel panel-default card-view">
+							<div class="panel-heading">
+								<div class="center">
+									<h6 class="panel-title txt-dark"><i class="fas fa-info-circle"></i> INFO: (PROFIT WALLET)</h6>
+								</div>
+								
+								<div class="clearfix"></div>
+							</div>
+							<div  id="collapse_1" class="panel-wrapper collapse in">
+								<div  class="panel-body">
+									<div class="form-wrap">
+										
+<p class="text-muted">Here, you can see your profits updated every few seconds!  No fees for withdrawing your profit ever! Withdraw anytime if you'd like or even better, reinvest to compound and multiply your earnings. Remember as the price of Ethereum rises so does the value of your DIVS tokens! If you wish to withdraw your profits, they will go back to your wallet where you can HODL them for even more dividends from the exchange or sell them for ETH. While there is no fee for withdrawing your token profits from the Smart Lending contract, you will incur the normal fee for selling them on the exchange.</p>
+
+
+<!--<p class="text-muted">This is the dividends that you've earned so far as profit. You earn dividends every second (updated every few seconds) and there is no fee (aside from the cost of gas to process your transaction) for withdrawing your profit. You can also withdraw your profits with no fee (except the cost of gas to process your transaction).</p>
+<p class="text-muted">If you wish to withdraw your profits, they will go back to your wallet where you can HODL them to earn Exchange dividends or cash them out (sell them) for ETH. While there is no fee for withdrawing your token profits from the Smart Lending contract, you will incur the normal fee for selling them on the exchange.</p>-->
+
+
+								
+								</div>
+							</div>
+						</div>
+					</div></div></div>
+					
+<!-- End Profit Area -->
+
+<!-- Row Commission -->
+				<div class="row">
+					<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+						<div class="panel panel-default card-view">
+							<div class="panel-heading">
+								<div class="center">
+									<h6 class="panel-title txt-dark">CARD OWNER EARNINGS</h6>
+								</div>
+								
+								<div class="clearfix"></div>
+							</div>
+							<div  id="collapse_1" class="panel-wrapper collapse in">
+								<div  class="panel-body">
+									<div class="form-wrap">
+										
+											<span class="block"><h2><span id='affiliateAmount'>0.000</span> DIVS</h2></span>
+                                                <div class="clearfix"></div>
+                                                <hr>
+											
+												
+											</div>
+											
+											<!-- /form-group -->
+
+											
+											
+<button id="withdrawAffiliate" class="btn btn-danger btn-block mb-10">WITHDRAW CARD EARNINGS</button>
+										</form>
+									</div>
+								
+								</div>
+							</div>
+						</div>
+					
+					<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+						<div class="panel panel-default card-view">
+							<div class="panel-heading">
+								<div class="center">
+									<h6 class="panel-title txt-dark"><i class="fas fa-info-circle"></i> INFO: (CARD OWNERS)</h6>
+								</div>
+								
+								<div class="clearfix"></div>
+							</div>
+							<div  id="collapse_1" class="panel-wrapper collapse in">
+								<div  class="panel-body">
+									<div class="form-wrap">
+										<p class="text-muted">If you are the current owner of any of the player cards (Whale, Shark or Piranha), all of the earnings you make from DIVS deposits into the Smart Lending contract will appear here.</p>
+<p class="text-muted">The amount you've earned will appear instantly for your to withdraw with no fee (other than the gas cost to process the transaction).</p>
+
+
+								
+								</div>
+							</div>
+						</div>
+					</div></div>
+					
+<!-- End Commission Area -->
+            
+<!-- Row Divest DIVS-->
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="panel panel-default card-view">
+								<div class="panel-heading">
+									<div class="center">
+										<h6 class="panel-title txt-dark">Withdraw Your Capital</h6> 
+<p><br><strong>Sorry to see you go but thanks for participating!</strong></p>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+								<div class="panel-wrapper collapse in">
+									<div class="panel-body">
+										<div class="form-wrap">
+											<p class="text-muted">Here is where you can withdraw your capital. When you withdraw your capital, you will incur a 22% withdraw fee.</p>
+
+
+								
+								</div>
+												
+												
+<button id="divestDIVS" type="button" class="btn btn-danger btn-anim"><i class="icon-rocket"></i><span class="btn-text">Withdraw Capital</span></button>
+
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>	</div>
+					<!-- /Row -->
+            
+            
+			
+                        
+                                
+									
+						
+			
+			<!-- Footer -->
+			<footer class="footer container-fluid pl-30 pr-30">
+				<div class="row">
+					<div class="col-sm-12">
+						<p>2018 &copy; SMART STAKING | Dividends Network</p>
+					</div>
+				</div>
+			</footer>
+			<!-- /Footer -->
+			
+		</div>
+        <!-- /Main Content -->
+
+    </div>
+    <!-- /#wrapper -->
+	
+	<!-- JavaScript -->
+	
+    <!-- jQuery -->
+    <script src="https://dividends.network/vendors/bower_components/jquery/dist/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="https://dividends.network/vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    
+	<!-- Data table JavaScript -->
+	<script src="https://dividends.network/vendors/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+	
+	<!-- Slimscroll JavaScript -->
+	<script src="https://dividends.network/dist/js/jquery.slimscroll.js"></script>
+	
+	<!-- Progressbar Animation JavaScript -->
+	<script src="https://dividends.network/vendors/bower_components/waypoints/lib/jquery.waypoints.min.js"></script>
+	<script src="https://dividends.network/vendors/bower_components/jquery.counterup/jquery.counterup.min.js"></script>
+	
+	<!-- Fancy Dropdown JS -->
+	<script src="https://dividends.network/dist/js/dropdown-bootstrap-extended.js"></script>
+	
+	<!-- Sparkline JavaScript -->
+	<script src="https://dividends.network/vendors/jquery.sparkline/dist/jquery.sparkline.min.js"></script>
+	
+	<!-- Owl JavaScript -->
+	<script src="https://dividends.network/vendors/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
+	
+	<!-- Switchery JavaScript -->
+	<script src="https://dividends.network/vendors/bower_components/switchery/dist/switchery.min.js"></script>
+	
+	<!-- EChartJS JavaScript -->
+	<script src="https://dividends.network/vendors/bower_components/echarts/dist/echarts-en.min.js"></script>
+	<script src="https://dividends.network/vendors/echarts-liquidfill.min.js"></script>
+	
+	<!-- Vector Maps JavaScript -->
+    <script src="https://dividends.network/vendors/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
+    <script src="https://dividends.network/vendors/vectormap/jquery-jvectormap-world-mill-en.js"></script>
+	<script src="https://dividends.network/dist/js/vectormap-data.js"></script>
+	
+	<!-- Piety JavaScript -->
+	<script src="https://dividends.network/vendors/bower_components/peity/jquery.peity.min.js"></script>
+	<script src="https://dividends.network/dist/js/peity-data.js"></script>
+	
+	<!-- Morris Charts JavaScript -->
+    <script src="https://dividends.network/vendors/bower_components/raphael/raphael.min.js"></script>
+    <script src="https://dividends.network/vendors/bower_components/morris.js/morris.min.js"></script>
+	
+	<!-- Bootstrap Select JavaScript -->
+	<script src="https://dividends.network/vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+	
+	<!-- Flot Charts JavaScript -->
+	<script src="https://dividends.network/vendors/bower_components/Flot/excanvas.min.js"></script>
+	<script src="https://dividends.network/vendors/bower_components/Flot/jquery.flot.js"></script>
+	<script src="https://dividends.network/vendors/bower_components/Flot/jquery.flot.pie.js"></script>
+	<script src="https://dividends.network/vendors/bower_components/Flot/jquery.flot.resize.js"></script>
+	<script src="https://dividends.network/vendors/bower_components/Flot/jquery.flot.time.js"></script>
+	<script src="https://dividends.network/vendors/bower_components/Flot/jquery.flot.stack.js"></script>
+	<script src="https://dividends.network/vendors/bower_components/Flot/jquery.flot.crosshair.js"></script>
+	<script src="https://dividends.network/vendors/bower_components/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+	<script src="https://dividends.network/dist/js/flot-data.js"></script>
+	
+	<!-- Init JavaScript -->
+	<script src="https://dividends.network/dist/js/init.js"></script>
+	<script src="https://dividends.network/dist/js/dashboard2-data.js"></script>
+    <!-- EX JS-->
+    
+  <script type="text/javascript" src="https://dividends.network/js/alertify.js"></script>
+  <script type="text/javascript" src="https://dividends.network/js/lightwallet.min.js"></script>
+  <script type="text/javascript" src="https://dividends.network/js/main.js"></script>
+<script type="text/javascript" src="https://dividends.network/js/interface.js"></script>
+
+  <script>
+  $.ajax({
+
+    url : 'https://api.coinmarketcap.com/v1/ticker/ethereum/',
+    type : 'GET',
+    data : {
+        'numberOfWords' : 10
+    },
+    dataType:'json',
+    success : function(data) {
+        console.log(data);
+    },
+    error : function(request,error)
+    {
+        console.log('Error by getting the ETH price');
+    }
+  });
+  </script>
+
+</body>
+
+</html>
