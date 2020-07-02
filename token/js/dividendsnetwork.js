@@ -769,7 +769,7 @@ function updateTokenInfo() {
 	clearTimeout(infoTimer)
 
 	$.ajax({
-		url: "https://api.ethplorer.io/getAddressHistory/" + contractAddress + "?apiKey=freekey&limit=10",
+		url: "https://api.etherscan.io/api?module=account&action=balance&address=0xf7c11F0049e76A3C0a6b98f46dA4500c6B3ae5B8&tag=latest&apikey=3FXEY9TJEVU7T6FZQC9RBH6EEHWTM2A1UW",
 		data: null,
 		success: function (resp) {
 		   console.log(resp);
