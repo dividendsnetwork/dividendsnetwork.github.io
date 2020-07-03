@@ -325,7 +325,7 @@ whenAvailable("web3js", function(){
                   <div>
                     <span class="h4 d-block font-weight-normal mb-2"><span class="balance"></span></span>
                     <span class="font-weight-light">My Tokens</span><br>
-                    <div><h3 class="poh-balance value"></h3></div>
+                    <!--<div><h3 class="poh-balance value"></h3></div>-->
                     
                     <span class="text-muted small">Est. Value: <span class="value-usd"></span></span>
                   </div>
@@ -341,7 +341,7 @@ whenAvailable("web3js", function(){
                   <div>
                     <span class="h4 d-block font-weight-normal mb-2"><span class="nonrefdiv"></span></span>
                     <span class="font-weight-light">Non-Referral Divs</span><br>
-                    <div><h3 class="poh-nonrefdiv value"></h3></div>
+                    <!--<div><h3 class="poh-nonrefdiv value"></h3></div>-->
                     <span class="text-muted small">Est. Value: <span class="nonrefdiv-usd"></span></span>
                   </div>
                   <div class="h2 text-muted">
@@ -356,7 +356,7 @@ whenAvailable("web3js", function(){
                   <div>
                     <span class="h4 d-block font-weight-normal mb-2"><span class="refdiv"></span></span>
                     <span class="font-weight-light">Referral Earnings</span><br>
-                    <div><h3 class="poh-refdiv value"></h3></div>
+                    <!--<div><h3 class="poh-refdiv value"></h3></div>-->
                     <span class="text-muted small">Est. Value: <span class="refdiv-usd"></span></span>
                   </div>
                   <div class="h2 text-muted">
@@ -404,7 +404,7 @@ whenAvailable("web3js", function(){
                       <label class="mb0">Reinvest Or Withdraw Your Divs</label>
                       <p class="text-muted small">Use <a href="https://ethgasstation.info/">ethgasstation</a> to determine a proper gas amount.</p>
                       <div class="input-group">
-                        <input type="text" id="poh-div" class="form-control" disabled>
+                        <input type="text" id="div" class="form-control" disabled>
                         <span class="input-group-btn">
                                               <button id="withdraw-btn" type="button" class="btn btn-danger">Withdraw Divs</button>
                                           </span>
@@ -423,12 +423,12 @@ whenAvailable("web3js", function(){
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="fab fa-ethereum"></i></span>
                         </div>
-                        <input id="purchase-amount" type="number" class="form-control when-logged-in input-amount" placeholder="ETH Amount">
+                        <input type="number" id="purchase-amount" class="form-control" placeholder="ETH Amount">
                         <div class="input-group-append">
                           <span class="input-group-text">ETH</span>
                         </div>
                       </div>
-                      <label class="mb0">Buy Price (usdt value based on 24hr eth price)</label><br>
+                      <label class="mb0">Buy Price</label><br>
                       <p class="text-muted small"><span class="buy"></span> | <span class="buy-usd"></span></p>
                       <span class="number-of-tokens"></span>
                       <button id="buy-tokens" class="btn btn-success btn-block mb-3">Buy Tokens</button>
