@@ -757,7 +757,7 @@ function updateData () {
     contract.myDividends(true, function (e, r) {
       let div = convertWeiToEth(r).toFixed(6)
 
-      $('.div').text(div)
+      $('.totaldiv').text(div)
       $('input.div').val(div + " ETH")
       $('.div-usd').text(Number((convertWeiToEth(r) * ethPrice).toFixed(2)).toLocaleString())
 
