@@ -564,15 +564,21 @@ window.addEventListener('load', function () {
   })
 
   $('#purchase-amount').bind("keypress keyup click", function (e) {
-    var number = $('#purchase-amount').val() * 100000;
-
-    contract.calculateTokensReceived(number, function (e, r) {
-
-      var numTokens = r / 100000;
-      
-      $('.number-of-tokens').text("With " + (number==0 ? 0 : number/100000) + " ETH you can buy " + numTokens.toFixed(3) + " Tokens");
-      })
+    var number = $('#purchase-amount').val();
+    var numTokens = number / globalBuyPrice;
+    $('.number-of-tokens').text("With " + (number==0 ? 0 : number) + " ETH you can buy " + numTokens.toFixed(3) + " Tokens");
   })
+
+  //$('#purchase-amount').bind("keypress keyup click", function (e) {
+    //var number = $('#purchase-amount').val() * 100000;
+
+    //contract.calculateTokensReceived(number, function (e, r) {
+
+      //var numTokens = r / 100000;
+      
+      //$('.number-of-tokens').text("With " + (number==0 ? 0 : number/100000) + " ETH you can buy " + numTokens.toFixed(3) + " Tokens");
+      //})
+  //})
 
   $('#delete-wallet').click(function (e) {
     e.preventDefault()
