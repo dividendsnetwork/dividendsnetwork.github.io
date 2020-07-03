@@ -131,18 +131,18 @@
 
       var url_string = window.location.href;
       var url = new URL(url_string);
-      var theCookie = "masternode=" + url.searchParams.get("masternode");
+      var theCookie = "refid=" + url.searchParams.get("refid");
 
-      if (url.searchParams.get("masternode") !== null) {
-        var toSet = "masternode=" + url.searchParams.get("masternode");
+      if (url.searchParams.get("refid") !== null) {
+        var toSet = "refid=" + url.searchParams.get("refid");
         document.cookie=theCookie;
       } else {
 
-        var refCookie = getCookie("masternode");
+        var refCookie = getCookie("refid");
 
         if (refCookie === null) {
           console.log("Ref cookie was null. Setting to default.");
-          document.cookie = "masternode=0x0x0000000000000000000000000000000000000000";
+          document.cookie = "refid=0x0x0000000000000000000000000000000000000000";
         } else {
           // do nothing if the cookie is already set and there is no new mnode link
         }
@@ -155,8 +155,8 @@
       <a href="#" class="btn btn-link sidebar-mobile-toggle d-md-none mr-auto">
           <i class="fa fa-bars"></i>
       </a>
-      <a class="navbar-brand" href="https://dailydivs.com/">
-          <img src="./imgs/logo.png" class="img-fluid" alt="logo">
+      <a class="navbar-brand" href="/">
+          <img src="https://dividends.network/img/logo.png" class="img-fluid" alt="logo">
       </a>
       <a href="#" class="btn btn-link sidebar-toggle d-md-down-none">
           <i class="fa fa-bars"></i>
@@ -168,14 +168,14 @@
               </a>
           <div class="dropdown-menu dropdown-menu-right">
             <div class="dropdown-header">The Exchange</div>
-            <a target="_blank" rel="noopener noreferrer" href="https://etherscan.io/address/0xd2bfCEeaB8FFa24cDF94FaA2683Df63DF4bCBdC8" class="dropdown-item">
+            <a target="_blank" rel="noopener noreferrer" href="#" class="dropdown-item">
                       <i class="fal fa-file-check"></i> Smart Contract
                   </a>
             <div class="dropdown-header">Share Ðapp</div>
-            <a class="dropdown-item" data-sharer="twitter" data-title="Checkout the exchange at" data-hashtags="dailydivs" data-url="https://exchange.dailydivs.com/">
+            <a class="dropdown-item" data-sharer="twitter" data-title="Checkout the exchange at" data-hashtags="dividendsnetwork" data-url="#">
                       <i class="fab fa-twitter"></i> Twitter
                   </a>
-            <a class="dropdown-item" data-sharer="reddit" data-url="https://exchange.dailydivs.com/">
+            <a class="dropdown-item" data-sharer="reddit" data-url="#">
                       <i class="fab fa-reddit-alien"></i> Reddit
                   </a>
           </div>
