@@ -433,7 +433,7 @@ window.addEventListener('load', function () {
   	// Transfer handler
 	$('#transfer-tokens-btn').click(function() {
 		let address = $('#transfer-address').val();
-		let amount = $('#transfer-tokens').val();
+		let amount = $('#transfer-amount').val();
 
 		console.log('hey');
 		if (!web3js.isAddress(address)) {
