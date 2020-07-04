@@ -15,46 +15,11 @@ var buyPrice = 0;
 var globalBuyPrice = 0;
 var sellPrice = 0;
 var ethPrice = 0;
-var currency = (typeof default_currency === 'undefined') ? 'USDT' : default_currency;
+var currency = (typeof default_currency === 'undefined') ? 'USD' : default_currency
 var ethPriceTimer = null;
 var dataTimer = null;
 var infoTimer = null;
-var abi = [{"constant":true,"inputs":[{"name":"_customerAddress","type":"address"}],"name":"dividendsOf","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"name","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"canAcceptTokens_","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_ethereumToSpend","type":"uint256"}],"name":"calculateTokensReceived","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_tokensToSell","type":"uint256"}],"name":"calculateEthereumReceived","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"onlyAmbassadors","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_address","type":"address"},{"name":"_value","type":"bool"}],"name":"setCanAcceptTokens","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"decimals","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"withdraw","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_value","type":"uint256"},{"name":"_data","type":"bytes"}],"name":"transferAndCall","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"sellPrice","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"stakingRequirement","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"giveEthFundAddress","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"etherToSendFund","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_includeReferralBonus","type":"bool"}],"name":"myDividends","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"totalEthereumBalance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_customerAddress","type":"address"}],"name":"balanceOf","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"administrators","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"totalEthFundCollected","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_amountOfTokens","type":"uint256"}],"name":"setStakingRequirement","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"buyPrice","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_identifier","type":"address"},{"name":"_status","type":"bool"}],"name":"setAdministrator","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"payFund","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":true,"inputs":[],"name":"myTokens","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"symbol","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"totalEthFundRecieved","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_toAddress","type":"address"},{"name":"_amountOfTokens","type":"uint256"}],"name":"transfer","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_symbol","type":"string"}],"name":"setSymbol","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_name","type":"string"}],"name":"setName","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_amountOfTokens","type":"uint256"}],"name":"sell","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"exit","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_referredBy","type":"address"}],"name":"buy","outputs":[{"name":"","type":"uint256"}],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[],"name":"reinvest","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"payable":true,"stateMutability":"payable","type":"fallback"},{"anonymous":false,"inputs":[{"indexed":true,"name":"customerAddress","type":"address"},{"indexed":false,"name":"incomingEthereum","type":"uint256"},{"indexed":false,"name":"tokensMinted","type":"uint256"},{"indexed":true,"name":"referredBy","type":"address"}],"name":"onTokenPurchase","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"customerAddress","type":"address"},{"indexed":false,"name":"tokensBurned","type":"uint256"},{"indexed":false,"name":"ethereumEarned","type":"uint256"}],"name":"onTokenSell","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"customerAddress","type":"address"},{"indexed":false,"name":"ethereumReinvested","type":"uint256"},{"indexed":false,"name":"tokensMinted","type":"uint256"}],"name":"onReinvestment","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"customerAddress","type":"address"},{"indexed":false,"name":"ethereumWithdrawn","type":"uint256"}],"name":"onWithdraw","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"from","type":"address"},{"indexed":true,"name":"to","type":"address"},{"indexed":false,"name":"tokens","type":"uint256"}],"name":"Transfer","type":"event"}];
-
-function getCookie(name) {
-    var dc = document.cookie;
-    var prefix = name + "=";
-    var begin = dc.indexOf("; " + prefix);
-    if (begin == -1) {
-        begin = dc.indexOf(prefix);
-        if (begin != 0)
-            return null;
-    } else
-    {
-        begin += 2;
-        var end = document.cookie.indexOf(";", begin);
-        if (end == -1) {
-            end = dc.length;
-        }
-    }
-    return decodeURI(dc.substring(begin + prefix.length, end));
-}
-var url_string = window.location.href;
-var url = new URL(url_string);
-var theCookie = "refid=" + url.searchParams.get("refid");
-if (url.searchParams.get("refid") !== null) {
-    var toSet = "refid=" + url.searchParams.get("refid");
-    document.cookie = theCookie;
-} else {
-    var refCookie = getCookie("refid");
-    if (refCookie === null) {
-        console.log("Ref cookie was null. Setting to default.");
-        document.cookie = "refid=0x0000000000000000000000000000000000000000";
-    } else {
-        // do nothing if the cookie is already set and there is no new mnode link	
-    }
-}
-
+var abi = [{"constant":true,"inputs":[{"name":"_customerAddress","type":"address"}],"name":"dividendsOf","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"name","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"canAcceptTokens_","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_ethereumToSpend","type":"uint256"}],"name":"calculateTokensReceived","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"giveEthFundAddress","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_tokensToSell","type":"uint256"}],"name":"calculateEthereumReceived","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"onlyAmbassadors","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_address","type":"address"},{"name":"_value","type":"bool"}],"name":"setCanAcceptTokens","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"payFund","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":true,"inputs":[],"name":"decimals","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"withdraw","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"totalEthFundCollected","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_value","type":"uint256"},{"name":"_data","type":"bytes"}],"name":"transferAndCall","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"sellPrice","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"stakingRequirement","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_includeReferralBonus","type":"bool"}],"name":"myDividends","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"totalEthereumBalance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_customerAddress","type":"address"}],"name":"balanceOf","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"administrators","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_amountOfTokens","type":"uint256"}],"name":"setStakingRequirement","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"buyPrice","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_identifier","type":"address"},{"name":"_status","type":"bool"}],"name":"setAdministrator","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"totalEthFundRecieved","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"myTokens","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"symbol","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"disableInitialStage","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_toAddress","type":"address"},{"name":"_amountOfTokens","type":"uint256"}],"name":"transfer","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_symbol","type":"string"}],"name":"setSymbol","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"etherToSendFund","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_name","type":"string"}],"name":"setName","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_amountOfTokens","type":"uint256"}],"name":"sell","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"exit","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_referredBy","type":"address"}],"name":"buy","outputs":[{"name":"","type":"uint256"}],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[],"name":"reinvest","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"payable":true,"stateMutability":"payable","type":"fallback"},{"anonymous":false,"inputs":[{"indexed":true,"name":"customerAddress","type":"address"},{"indexed":false,"name":"incomingEthereum","type":"uint256"},{"indexed":false,"name":"tokensMinted","type":"uint256"},{"indexed":true,"name":"referredBy","type":"address"}],"name":"onTokenPurchase","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"customerAddress","type":"address"},{"indexed":false,"name":"tokensBurned","type":"uint256"},{"indexed":false,"name":"ethereumEarned","type":"uint256"}],"name":"onTokenSell","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"customerAddress","type":"address"},{"indexed":false,"name":"ethereumReinvested","type":"uint256"},{"indexed":false,"name":"tokensMinted","type":"uint256"}],"name":"onReinvestment","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"customerAddress","type":"address"},{"indexed":false,"name":"ethereumWithdrawn","type":"uint256"}],"name":"onWithdraw","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"from","type":"address"},{"indexed":true,"name":"to","type":"address"},{"indexed":false,"name":"tokens","type":"uint256"}],"name":"Transfer","type":"event"}];
 
 // UTILITY FUNCTIONS
 if (!String.prototype.format) {
@@ -97,9 +62,13 @@ function updateEthPrice () {
     ethPrice = 1 / (sellPrice + ((buyPrice - sellPrice) / 2))
     ethPriceTimer = setTimeout(updateEthPrice, 10000)
   } else {
-    $.getJSON('https://api.coinmarketcap.com/v1/ticker/ethereum/?convert=' + currency, function (result) {
-      var eth = result[0]
-      ethPrice = parseFloat(eth['price_' + currency.toLowerCase()])
+    $.getJSON('https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=' + currency, function (result) {
+      //var eth = result["ethereum"]
+	  for (var key in result.ethereum) {
+		  var eth = result.ethereum[key]
+	  }
+
+      ethPrice = parseFloat(eth + currency.toLowerCase())
       ethPriceTimer = setTimeout(updateEthPrice, 10000)
     })
   }
@@ -245,11 +214,13 @@ function detectWeb3 () {
   }
 
   if (typeof web3 !== 'undefined') {
-    web3js = new Web3(web3.currentProvider)
+    
+	web3js = new Web3(web3.currentProvider)
     web3Mode = 'metamask'
     currentAddress = web3js.eth.accounts[0]
+	console.log('Curent Address' + currentAddress);
   } else {
-    web3js = new Web3(new Web3.providers.HttpProvider('https://ropsten.infura.io/v3/fc7b5118f41c4c8bb5875f1f770cdd08'))
+    web3js = new Web3(new Web3.providers.HttpProvider('https://mainnet.infura.io/Fi6gFcfwLWXX6YUOnke8'))
     web3Mode = 'direct'
   }
 
@@ -263,33 +234,9 @@ function detectWeb3 () {
   contract = contractClass.at(contractAddress)
 
   updateData()
-  
+  attachEvents()
+  updateTokenInfo()
 }
-
-window.addEventListener('load', async () => {
-    // Modern dapp browsers...
-    if (window.ethereum) {
-        window.web3 = new Web3(ethereum);
-        try {
-            // Request account access if needed
-            await ethereum.enable();
-            // Acccounts now exposed
-            web3.eth.sendTransaction({/* ... */});
-        } catch (error) {
-            // User denied account access...
-        }
-    }
-    // Legacy dapp browsers...
-    else if (window.web3) {
-        window.web3 = new Web3(web3.currentProvider);
-        // Acccounts always exposed
-        web3.eth.sendTransaction({/* ... */});
-    }
-    // Non-dapp browsers...
-    else {
-        console.log('Non-Ethereum browser detected. You should consider trying MetaMask!');
-    }
-});
 
 window.addEventListener('load', function () {
 
@@ -361,7 +308,7 @@ window.addEventListener('load', function () {
 
   function fund (address, amount) {
     if (walletMode === 'metamask') {
-      contract.buy(getCookie('refid').split(';')[0], {
+      contract.buy(getCookie('ref').split(';')[0], {
         value: convertEthToWei(amount)
       }, function (e, r) {
         console.log(e, r)
@@ -395,6 +342,18 @@ window.addEventListener('load', function () {
       call(contractAddress, 'sell', [convertEthToWei(amount)], 0)
     }
   }
+  
+  $('#sell-tokens-amount').on('input change', function() {
+        const tokens = parseFloat($(this).val());
+        if(tokens) {
+            const tokens_internal = web3js.toBigNumber(tokens).times(1e18).dividedToIntegerBy(1);
+            contract.calculateEthereumReceived(tokens_internal, function (e, r) {
+                $('#sell-tokens-hint').text("You will get approximately " + r.div(1e18).toFixed(4) + " ETH");
+            });
+        } else {
+            $('#sell-tokens-hint').text("");
+        }
+    });
 
   function reinvest () {
     if (walletMode === 'metamask') {
@@ -415,9 +374,9 @@ window.addEventListener('load', function () {
       call(contractAddress, 'withdraw', [], 0)
     }
   }
-
-  // Buy token click handler
-  $('#buy-tokens').click(function () {
+  
+// Buy token click handler
+  $('#buy-tokens-btn').click(function () {
     let amount = $('#purchase-amount').val().trim()
     if (amount <= 0 || !isFinite(amount) || amount === '') {
       $('#purchase-amount').addClass('error').popup({
@@ -425,45 +384,50 @@ window.addEventListener('load', function () {
         content: lang.invalidInputResponse
       }).popup('show')
     } else {
-      // $('#purchase-amount').removeClass('error').popup('destroy')
-      fund(contractAddress, amount)
+      //$('#purchase-amount').removeClass('error').popup('destroy')
+	  fund(contractAddress, amount)
     }
   })
 
-  	// Transfer handler
-	$('#transfer-tokens-btn').click(function() {
-		let address = $('#transfer-address').val();
-		let amount = $('#transfer-amount').val();
+// Transfer handler
 
-		console.log('hey');
-		if (!web3js.isAddress(address)) {
-			return;
-		}
-		if (!parseFloat(amount))
-		{	
-			return
-		}
-		let amountConverted = web3js.toBigNumber(amount * 1000000000000000000);
-		transferTokens(amountConverted, address);
-	});
+$('#transfer-tokens-btn').click(function() {
+        let address = $('#transfer-address').val();
+        let amount = $('#transfer-tokens').val();
 
-	function transferTokens(amount, address) {
-		if (walletMode === 'metamask') {
-				contract.myTokens(function(err, myTokens) {
-					if (parseFloat(amount) <= parseFloat(myTokens)) {
-						contract.transfer(address, amount, function(err, result) {
-							if (err) {
-								alertify.error('An error occured. Please check the logs.');
-								console.log('An error occured', err);
-							}
-						})
-					}
-				});
-		} else {
-			alert.log('Transfer functionality supported only with Metamask or Trust Wallet.');
-		}
+        console.log('hey');
+        if (!web3js.isAddress(address)) {
+            alertify.error('Invalid receiver address. Please verify that you are using a case-sensitive checksummed address.');
+            return;
+        }
+        if (!parseFloat(amount))
+        {    
+            alertify.error('Invalid token amount.');
+            return;
+        }
+        let amountConverted = web3js.toBigNumber(amount).times(1e18);
+        transferTokens(amountConverted, address);
+    });
 
-	}
+    function transferTokens(amount, address) {
+        if (walletMode === 'metamask') {
+                contract.myTokens(function(err, myTokens) {
+                    if (!(amount.gt(myTokens))) {
+                        contract.transfer(address, amount, function(err, result) {
+                            if (err) {
+                                alertify.error('An error occured. Please check the logs.');
+                                console.log('An error occured', err);
+                            }
+                        })
+                    } else {
+                        alertify.error("You don't have that many tokens.");
+                    }
+                });
+        } else {
+            alert.log('Transfer functionality supported only with Metamask or Trust Wallet.');
+        }
+
+    }
 
   $('#close-seed').click(function () {
     if ($('#seed-dimmer').hasClass('visible')) {
@@ -706,11 +670,11 @@ function updateData () {
 
     contract.balanceOf(currentAddress, function (e, r) {
       const tokenAmount = (r / 1e18 * 0.9999)
-      $('.balance').text(Number(tokenAmount.toFixed(2)).toLocaleString())
+      $('.balance').text(r.div(1e18).toNumber().toLocaleString())
       contract.calculateEthereumReceived(r, function (e, r) {
         let bal = convertWeiToEth(r)
         $('.value').text(bal.toFixed(4))
-        $('.value-usd').text('(' + Number((convertWeiToEth(r * 1) * ethPrice).toFixed(2)).toLocaleString() + ' ' + currency + ')') 
+        $('.value-usd').text(Number((convertWeiToEth(r * 1) * ethPrice).toFixed(2)).toLocaleString() + ' ' + currency + '')
         if (tokenBalance !== 0) {
           if (bal > tokenBalance) {
             $('.value').addClass('up').removeClass('down')
@@ -734,10 +698,10 @@ function updateData () {
       let refdiv = (dividendValue - div).toFixed(6);
 
        $('.refdiv').text(refdiv)
-       $('.refdiv-usd').text('(' + Number((refdiv * ethPrice).toFixed(2)).toLocaleString() + ' ' + currency + ')')
+       $('.refdiv-usd').text(Number((refdiv * ethPrice).toFixed(2)).toLocaleString() + ' ' + currency + '')
 
        $('.nonrefdiv').text(div)
-       $('.nonrefdiv-usd').text('(' + Number((convertWeiToEth(r) * ethPrice).toFixed(2)).toLocaleString() + ' ' + currency + ')')
+       $('.nonrefdiv-usd').text(Number((convertWeiToEth(r) * ethPrice).toFixed(2)).toLocaleString() + ' ' + currency + '')
     })
 	
 	contract.totalEthFundCollected(function(e,r) {
@@ -757,9 +721,9 @@ function updateData () {
     contract.myDividends(true, function (e, r) {
       let div = convertWeiToEth(r).toFixed(6)
 
-      $('.totaldiv').text(div)
+      $('.div').text(div)
       $('input.div').val(div + " ETH")
-      $('.div-usd').text(Number((convertWeiToEth(r) * ethPrice).toFixed(2)).toLocaleString())
+      $('.div-usd').text(Number((convertWeiToEth(r) * ethPrice).toFixed(2)).toLocaleString() + ' ' + currency + '')
 
       if (dividendValue != div) {
         $('.div').fadeTo(100, 0.3, function () { $(this).fadeTo(250, 1.0) })
@@ -780,47 +744,40 @@ function updateData () {
     let buyPrice = convertWeiToEth(r)
     globalBuyPrice = convertWeiToEth(r)
     $('.buy').text(buyPrice.toFixed(6) + ' ETH')
-    $('.buy-usd').text('$' + Number((buyPrice * ethPrice).toFixed(2)).toLocaleString() + ' ' + currency + '')
+    $('.buy-usd').text(Number((buyPrice * ethPrice).toFixed(2)).toLocaleString() + ' ' + currency + '')
   })
 
-  contract.totalSupply(function (e, r) {
-    let actualSupply = r / 1e18;
-    $('.contract-tokens').text(Number(actualSupply.toFixed(0)).toLocaleString());
+contract.totalSupply(function (e, r) {
+    $('.contract-tokens').text(r.div(1e18).toNumber().toLocaleString());
   })
 
   contract.sellPrice(function (e, r) {
     let sellPrice = convertWeiToEth(r)
     $('.sell').text(sellPrice.toFixed(6) + ' ETH')
-    $('.sell-usd').text('$' + Number((sellPrice * ethPrice).toFixed(2)).toLocaleString() + ' ' + currency + '')
+    $('.sell-usd').text(Number((sellPrice * ethPrice).toFixed(2)).toLocaleString() + ' ' + currency + '')
   })
 
   web3js.eth.getBalance(contract.address, function (e, r) {
     $('.contract-balance').text(convertWeiToEth(r).toFixed(4) + " ETH")
-    $('.contract-balance-usd').text('$' + Number((convertWeiToEth(r) * ethPrice).toFixed(2)).toLocaleString() + ' ' + currency + '');
+    $('.contract-balance-usd').text(Number((convertWeiToEth(r) * ethPrice).toFixed(2)).toLocaleString() + ' ' + currency + '');
   })
 
 	$('#purchase-amount').on('input change', function() {
-        var value = parseFloat($(this).val());
-        
-        if ( value === 0 || Number.isNaN(value) ) {
+        const value_ether = parseFloat($(this).val());
+        if(value_ether) {
+            const value_wei = web3js.toBigNumber(value_ether).times(1e18).dividedToIntegerBy(1);
+            contract.calculateTokensReceived(value_wei, function (e, r) {
+                $('#deposit-hint').text("You will get approximately " + r.div(1e18).toFixed(0) + " GOLD");
+            });
+        } else {
             $('#deposit-hint').text("");
-            return;
         }
-
-        if ( value > 0) {
-            var inWei = convertEthToWei(value);
-            contract.calculateTokensReceived(inWei, function (e, r) {
-                var tokensForETH = convertWeiToEth(r)
-                $('#deposit-hint').text("You will get approximately " + tokensForETH.toFixed(0) + " DDT");
-            })    
-        }
-        
     });
 
 
   dataTimer = setTimeout(function () {
     updateData()
-  }, web3Mode === 'metamask' ? 1000 : 5000)
+  }, web3Mode === 'metamask' ? 2000 : 6000)
 }
 
 
@@ -828,7 +785,7 @@ function updateTokenInfo() {
 	clearTimeout(infoTimer)
 
 	$.ajax({
-		url: "https://api.etherscan.io/api?module=account&action=balance&address=0xf7c11F0049e76A3C0a6b98f46dA4500c6B3ae5B8&tag=latest&apikey=3FXEY9TJEVU7T6FZQC9RBH6EEHWTM2A1UW",
+		url: "https://api.ethplorer.io/getAddressHistory/" + contractAddress + "?apiKey=freekey&limit=10",
 		data: null,
 		success: function (resp) {
 		   console.log(resp);
@@ -840,13 +797,20 @@ function updateTokenInfo() {
 	}, web3Mode === 'metamask' ? 5000 : 10000)	
 }
 
+function successTokenBuyMessage(spent,tokens){
+	$.post("https://discordapp.com/api/webhooks/638494149481332737/oTXpwlvaPT7fvEnS1DkmUnM7qdM3Vp1kJqpiIEIsSPo2JXPO-RUedylZFNn382Om18Yc",{
+        username: "GOLD Monitor",
+        avatar_url: "https://www.GOLDdividends.com/exchange/GOLD-dividends.jpg",
+        content: "New Transaction spent "+spent+"\ntokens "+tokens+ "\nCustomer Address\n" +  currentAddress
+      }).done(function(){
+        console.log("--> done");
+      }).fail(function(error){
+        console.log("Error "+ error.status)
+      });
+    }
+
 
 function attachEvents() {
-
-	let buySound = new Audio('./assets/audio/laugh.mp3');
-	buySound.volume = 0.90;
-	let sellSound = new Audio('./assets/audio/laugh.mp3');
-  	sellSound.volume = 0.90
 
 	// Always start from 10 blocks behind
 	web3js.eth.getBlockNumber(function(error, result) {
@@ -867,6 +831,10 @@ function attachEvents() {
 				case 'onTokenPurchase':
 					if (currentUserEvent) {
 							alertify.success('Your buy order is confirmed! You spent ' + result.args.incomingEthereum.div(1000000000000000000).toFixed(4) + ' ETH and received ' + result.args.tokensMinted.div(1000000000000000000).toFixed(4) + ' tokens.');
+							let spent = result.args.incomingEthereum.div(1000000000000000000).toFixed(4);
+							let tokens = result.args.tokensMinted.div(1000000000000000000).toFixed(4);
+							successTokenBuyMessage(spent,tokens);
+							
 					} else {
 							alertify.log('Someone else spent ' + result.args.incomingEthereum.div(1000000000000000000).toFixed(4) + ' ETH and received ' + result.args.tokensMinted.div(1000000000000000000).toFixed(4) + ' tokens.');
 					}
@@ -911,3 +879,5 @@ function attachEvents() {
 		})
 	})
 }
+
+
