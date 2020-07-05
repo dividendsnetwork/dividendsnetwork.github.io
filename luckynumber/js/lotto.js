@@ -304,20 +304,20 @@ function setup() {
 
 	contract.hourPotLeader(function (error, result) {
 	    if(!error) {
-		$('#hour-leader').html("<a href='https://etherscan.io/address/"+result+"'>"+result.substring(0, 16) + "...</a>");
+		$('#hour-leader').html("<a href='https://etherscan.io/address/"+result+"'>"+result.substring(0, 10) + "...</a>");
 	    }
 	});
 
 	contract.dayPotLeader(function (error, result) {
 	    if(!error) {
-		$('#day-leader').html("<a href='https://etherscan.io/address/"+result+"'>"+result.substring(0, 16) + "...</a>");
+		$('#day-leader').html("<a href='https://etherscan.io/address/"+result+"'>"+result.substring(0, 10) + "...</a>");
 	
 	    }
 	});
 
 	contract.weekPotLeader(function (error, result) {
 	    if(!error) {
-		$('#week-leader').html("<a href='https://etherscan.io/address/"+result+"'>"+result.substring(0, 16) + "...</a>");
+		$('#week-leader').html("<a href='https://etherscan.io/address/"+result+"'>"+result.substring(0, 10) + "...</a>");
 	    }
 	});
 
