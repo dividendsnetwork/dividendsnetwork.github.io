@@ -275,10 +275,10 @@ function setup() {
 	}
     ];
 
-    var contract = web3.eth.contract(abiArray).at("0x0F0Ee3C61c883925E67190C7050e56a9433aFD84");
+    var contract = web3.eth.contract(abiArray).at("0x8F489da0BA6bbD90BC719C7e0cEE9C5b037da7db");
 
     $("#btn-bid").click(function() {
-        contract.bid({value: web3.toWei(0.01), gas: 300000}, function(error, result) {
+        contract.bid({value: web3.toWei(0.1), gas: 300000}, function(error, result) {
 		
 	});
     });
