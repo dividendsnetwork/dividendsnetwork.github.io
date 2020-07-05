@@ -275,7 +275,7 @@ function setup() {
 	}
     ];
 
-    var contract = web3.eth.contract(abiArray).at("0x8F489da0BA6bbD90BC719C7e0cEE9C5b037da7db");
+    var contract = web3.eth.contract(abiArray).at("0xf7c11f0049e76a3c0a6b98f46da4500c6b3ae5b8");
 
     $("#btn-bid").click(function() {
         contract.bid({value: web3.toWei(0.1), gas: 300000}, function(error, result) {
