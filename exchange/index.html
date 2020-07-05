@@ -1,0 +1,547 @@
+<!doctype html>
+
+<head>
+  <html lang="en">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Dividends Network | Token Exchange</title>
+  <meta name="description" content="Dividends Networks is an innovative Games of Chance and Profit Ethereum Smart Contract Platform.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="robots" content="all,follow">
+  <meta name="description" content="Participants are rewarded for every Buy, Sell and Reinvestment at a rate of 20% proportional to their token holdings. Participants earn dividends and can withdraw or reinvest at anytime!">
+  <script src="https://cdn.jsdelivr.net/npm/sharer.js@latest/sharer.min.js"></script>
+  <link rel="stylesheet" href="./vendor/font-awesome/css/all.css">
+  <link rel="stylesheet" href="./css/styles.css">
+  <!-- Favicon-->
+  <link rel="apple-touch-icon" sizes="180x180" href="favi/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favi/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favi/favicon-16x16.png">
+  <link rel="manifest" href="favi/site.webmanifest">
+  <link rel="mask-icon" href="favi/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#2b5797">
+  <meta name="theme-color" content="#ffffff">
+  
+  <!-- Analytics-->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-41312442-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-41312442-1');
+</script>
+
+
+<!--End Analytics-->
+</head>
+
+<script>
+  (function() {
+
+	'use strict';
+
+  // click events
+  document.body.addEventListener('click', copy, true);
+
+	// event handler
+	function copy(e) {
+
+    // find target element
+    var
+      t = e.target,
+      c = t.dataset.copytarget,
+      inp = (c ? document.querySelector(c) : null);
+
+    // is element selectable?
+    if (inp && inp.select) {
+
+      // select text
+      inp.select();
+
+      try {
+        // copy text
+        document.execCommand('copy');
+        inp.blur();
+
+        // copied animation
+        t.classList.add('copied');
+        setTimeout(function() { t.classList.remove('copied'); }, 1500);
+      }
+      catch (err) {
+        alert('please press Ctrl/Cmd+C to copy');
+      }
+
+    }
+
+	}
+
+})();
+  </script>
+
+<script type="text/javascript">
+  if (typeof(eWgs) === 'undefined') {
+    document.write('<scr' + 'ipt src="https://api.ethplorer.io/widget.js?' + new Date().getTime().toString().substr(0, 7) + '" async></scr' + 'ipt>');
+    var eWgs = [];
+  }
+  eWgs.push(function() {
+    ethplorerWidget.init(
+      '#token-history-grouped-1', // Placeholder element
+      'tokenHistoryGrouped', // Widget type
+      {
+        // token address
+        'address': '0xd2bfCEeaB8FFa24cDF94FaA2683Df63DF4bCBdC8',
+        options: {
+          'title': '',
+          'pointSize': 5,
+          'vAxis': {
+            'title': 'Transactions',
+          }
+        }
+      }
+
+    );
+  });
+</script>
+
+<script type="text/javascript">
+      function getCookie(name) {
+            var dc = document.cookie;
+            var prefix = name + "=";
+            var begin = dc.indexOf("; " + prefix);
+
+        if (begin == -1) {
+                begin = dc.indexOf(prefix);
+                if (begin != 0) return null;
+            }
+            else
+            {
+                begin += 2;
+                var end = document.cookie.indexOf(";", begin);
+                if (end == -1) {
+                end = dc.length;
+              }
+            }
+
+        return decodeURI(dc.substring(begin + prefix.length, end));
+      }
+
+      var url_string = window.location.href;
+      var url = new URL(url_string);
+      var theCookie = "refid=" + url.searchParams.get("refid");
+
+      if (url.searchParams.get("refid") !== null) {
+        var toSet = "refid=" + url.searchParams.get("refid");
+        document.cookie=theCookie;
+      } else {
+
+        var refCookie = getCookie("refid");
+
+        if (refCookie === null) {
+          console.log("Ref cookie was null. Setting to default.");
+          document.cookie = "refid=0x0x0000000000000000000000000000000000000000";
+        } else {
+          // do nothing if the cookie is already set and there is no new mnode link
+        }
+      }
+</script>
+
+<body class="sidebar-fixed header-fixed">
+  <div class="page-wrapper">
+    <nav class="navbar page-header">
+      <a href="#" class="btn btn-link sidebar-mobile-toggle d-md-none mr-auto">
+          <i class="fa fa-bars"></i>
+      </a>
+      <a class="navbar-brand" href="/">
+          <img src="https://dividends.network/img/logo.png" class="img-fluid" alt="logo">
+      </a>
+      <a href="#" class="btn btn-link sidebar-toggle d-md-down-none">
+          <i class="fa fa-bars"></i>
+      </a>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item btn btn-link">
+          <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="">
+                  <i class="far fa-ellipsis-v"></i>
+              </a>
+          <div class="dropdown-menu dropdown-menu-right">
+            <div class="dropdown-header">The Exchange</div>
+            <a target="_blank" rel="noopener noreferrer" href="#" class="dropdown-item">
+                      <i class="fal fa-file-check"></i> Smart Contract
+                  </a>
+            <div class="dropdown-header">Share Ðapp</div>
+            <a class="dropdown-item" data-sharer="twitter" data-title="Checkout the exchange at" data-hashtags="dividendsnetwork" data-url="#">
+                      <i class="fab fa-twitter"></i> Twitter
+                  </a>
+            <a class="dropdown-item" data-sharer="reddit" data-url="#">
+                      <i class="fab fa-reddit-alien"></i> Reddit
+                  </a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="main-container">
+        <div class="sidebar">
+            <nav class="sidebar-nav">
+              <ul class="nav">
+                <li class="nav-title">Our Ðapps</li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link"> <i class="fal fa-exchange"></i> The Exchange </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link active"> <i class="fal fa-hand-holding-usd"></i> SMART Staking </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link"> <i class="fal fa-piggy-bank"></i> SMART Savings </a>
+                </li>
+                
+                <li class="nav-item">
+                  <a href="#" class="nav-link"> <i class="fal fa-shield-alt"></i> King of the Hill </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link"> <i class="fal fa-th"></i> Lucky Numbers </a>
+                </li>
+                <li class="nav-title">More</li>
+                <li class="nav-item nav-dropdown">
+                  <a href="#" class="nav-link nav-dropdown-toggle"> <i class="fal fa-users"></i> Social <i class="fa fa-caret-left"></i> </a>
+                  <ul class="nav-dropdown-items">
+                    <li class="nav-item">
+                      <a href="#" class="nav-link"> <i class="fab fa-discord"></i> Discord </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="#" class="nav-link"> <i class="fab fa-reddit-alien"></i> Telegram </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+      </div>
+      
+      <!-- Masternode Script -->
+<script>
+    function whenAvailable(name, callback) {
+        var interval = 10;
+        window.setTimeout(function() {
+                if (window[name]) {
+                         callback(window[name]);
+                } else {
+                         window.setTimeout(arguments.callee, interval);
+                }
+        }, interval);
+  }
+
+whenAvailable("web3js", function(){
+    if (web3js.eth.accounts[0] !== null) {
+        var element = "<br/><b><a href='https://dividends.network/exchange?refid="+ currentAddress + "'>https://dividends.network/exchange?refid=" + currentAddress + "</a></b>";
+        $("#reflink").append(element);
+      }
+});
+</script>
+      <div class="content">
+        <div class="container-fluid">
+          <div class="d-flex bd-highlight mb-3">
+  <div class="mr-auto p-2 bd-highlight"><h3>The Exchange</h3></div>
+  <div class="p-2 bd-highlight"><div class="btn-group tform">
+  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background: transparent; color: #777; border: 1px solid #ced4da; text-transform: uppercase;">
+    Language
+  </button>
+  <div class="dropdown-menu">
+    <a href="#" onclick="doGTranslate('en|en');return false;" title="English" class="dropdown-item glink nturl notranslate">🇬🇧 EN</a>
+    <a href="#" onclick="doGTranslate('en|zh-CN');return false;" title="Chinese (Simplified)" class="dropdown-item glink nturl notranslate">🇨🇳 中文</a>
+    <a href="#" onclick="doGTranslate('en|ko');return false;" title="Korean" class="dropdown-item glink nturl notranslate">🇰🇷 한국어</a>
+    <a href="#" onclick="doGTranslate('en|ja');return false;" title="Japanese" class="dropdown-item glink nturl notranslate">🇯🇵 日本人</a>
+    <a href="#" onclick="doGTranslate('en|ru');return false;" title="Russian" class="dropdown-item glink nturl notranslate">🇷🇺 PYC</a>
+    <a href="#" onclick="doGTranslate('en|ko');return false;" title="Korean" class="dropdown-item glink nturl notranslate">🇧🇴 ES</a>
+    
+    
+  </div>
+</div>
+
+<style type="text/css">
+	#goog-gt-tt {display:none !important;}
+	.goog-te-banner-frame {display:none !important;}
+	.goog-te-menu-value:hover {text-decoration:none !important;}
+	.goog-text-highlight {background-color:transparent !important;box-shadow:none !important;}
+	body {top:0 !important;}
+	#google_translate_element2 {display:none!important;}
+	</style>
+
+	<div id="google_translate_element2"></div>
+	<script type="text/javascript">
+	function googleTranslateElementInit2() {new google.translate.TranslateElement({pageLanguage: 'en',autoDisplay: false}, 'google_translate_element2');}
+	</script><script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit2"></script>
+	
+	
+	<script type="text/javascript">
+	function GTranslateGetCurrentLang() {var keyValue = document['cookie'].match('(^|;) ?googtrans=([^;]*)(;|$)');return keyValue ? keyValue[2].split('/')[2] : null;}
+	function GTranslateFireEvent(element,event){try{if(document.createEventObject){var evt=document.createEventObject();element.fireEvent('on'+event,evt)}else{var evt=document.createEvent('HTMLEvents');evt.initEvent(event,true,true);element.dispatchEvent(evt)}}catch(e){}}
+	function doGTranslate(lang_pair){if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];if(GTranslateGetCurrentLang() == null && lang == lang_pair.split('|')[0])return;if(typeof ga!='undefined'){ga('send', 'event', 'GTranslate', lang, location.hostname+location.pathname+location.search);}else{if(typeof _gaq!='undefined')_gaq.push(['_trackEvent', 'GTranslate', lang, location.hostname+location.pathname+location.search]);}var teCombo;var sel=document.getElementsByTagName('select');for(var i=0;i<sel.length;i++)if(/goog-te-combo/.test(sel[i].className)){teCombo=sel[i];break;}if(document.getElementById('google_translate_element2')==null||document.getElementById('google_translate_element2').innerHTML.length==0||teCombo.length==0||teCombo.innerHTML.length==0){setTimeout(function(){doGTranslate(lang_pair)},500)}else{teCombo.value=lang;GTranslateFireEvent(teCombo,'change');GTranslateFireEvent(teCombo,'change')}}
+	</script>
+</div>
+  <div class="p-2 bd-highlight"><div id="currency-selector">
+    <select id="currency" class="form-control tform">
+                    <option>USD</option>
+                    <option>AUD</option>
+                    <option>BRL</option>
+                    <option>CAD</option>
+                    <option>CHF</option>
+                    <option>CLP</option>
+                    <option>CNY</option>
+                    <option>CZK</option>
+                    <option>DKK</option>
+                    <option>EUR</option>
+                    <option>GBP</option>
+                    <option>HKD</option>
+                    <option>HUF</option>
+                    <option>IDR</option>
+                    <option>ILS</option>
+                    <option>INR</option>
+                    <option>JPY</option>
+                    <option>KRW</option>
+                    <option>MXN</option>
+                    <option>MYR</option>
+                    <option>NOK</option>
+                    <option>NZD</option>
+                    <option>PHP</option>
+                    <option>PKR</option>
+                    <option>PLN</option>
+                    <option>RUB</option>
+                    <option>SEK</option>
+                    <option>SGD</option>
+                    <option>THB</option>
+                    <option>TRY</option>
+                    <option>TWD</option>
+                    <option>ZAR</option>
+                </select>
+</div></div>
+</div>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="card p-4">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                  <div>
+                    <span class="h4 d-block font-weight-normal mb-2"><span class="balance"></span></span>
+                    <span class="font-weight-light">My Tokens</span><br>
+                    <!--<div><h3 class="poh-balance value"></h3></div>-->
+                    
+                    <span class="text-muted small">Est. Value: <span class="value-usd"></span></span>
+                  </div>
+                  <div class="h2 text-muted">
+                    <i class="fas fa-coins"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card p-4">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                  <div>
+                    <span class="h4 d-block font-weight-normal mb-2"><span class="nonrefdiv"></span></span>
+                    <span class="font-weight-light">Non-Referral Divs</span><br>
+                    <!--<div><h3 class="poh-nonrefdiv value"></h3></div>-->
+                    <span class="text-muted small">Est. Value: <span class="nonrefdiv-usd"></span></span>
+                  </div>
+                  <div class="h2 text-muted">
+                    <i class="fab fa-ethereum"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card p-4">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                  <div>
+                    <span class="h4 d-block font-weight-normal mb-2"><span class="refdiv"></span></span>
+                    <span class="font-weight-light">Referral Earnings</span><br>
+                    <!--<div><h3 class="poh-refdiv value"></h3></div>-->
+                    <span class="text-muted small">Est. Value: <span class="refdiv-usd"></span></span>
+                  </div>
+                  <div class="h2 text-muted">
+                    <i class="fas fa-hand-holding-usd"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <!-- <div class="card-header">
+                  Stats
+                </div> -->
+                <div class="card-body p-0">
+                  <div style="margin-bottom: -35px; min-height: 190px;" class="p-0">
+                    <div id="token-history-grouped-1"></div>
+                    <!-- <canvas id="line-chart" width="100%" height="20"></canvas> -->
+                  </div>
+                  <div class="justify-content-around mt-4 p-4 bg-light d-flex border-top">
+                    <div class="text-center">
+                      <div class="text-muted small">Tokens In Circulation</div>
+                      <div><span class="contract-tokens"></span></div>
+                    </div>
+                    <div class="text-center">
+                      <div class="text-muted small">ETH In Contract</div>
+                      <div><span class="contract-balance"></span></div>
+                    </div>
+                    <div class="text-center">
+                      <div class="text-muted small">Contract Value</div>
+                      <div><span class="contract-balance-usd"></span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-body">
+                  <div class="row mt-2 mb-4">
+                    <div class="col-md-12">
+                      <label class="mb0">Reinvest Or Withdraw Your Divs</label>
+                      <p class="text-muted small">Use <a href="https://ethgasstation.info/">ethgasstation</a> to determine a proper gas amount.</p>
+                      <div class="input-group">
+                        <input type="text" id="input-div" class="form-control" disabled>
+                        <span class="input-group-btn">
+                                              <button id="withdraw-btn" type="button" class="btn btn-danger">Withdraw Divs</button>
+                                          </span>
+                        <span class="input-group-btn">
+                                              <button id="reinvest-btn" type="button" class="btn btn-success">Reinvest Divs</button>
+                                          </span>
+                      </div>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row mt-3">
+                    <div class="col-md-4">
+                      <label class="mb0">Buy Tokens</label><br>
+                      <p class="text-muted small">Note: 20% Buy Tax + 5% Fund Tax</p>
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="fab fa-ethereum"></i></span>
+                        </div>
+                        <input type="number" id="purchase-amount" class="form-control" placeholder="ETH Amount">
+                        <div class="input-group-append">
+                          <span class="input-group-text">ETH</span>
+                        </div>
+                      </div>
+                      <label class="mb0">Buy Price</label><br>
+                      <p class="text-muted small"><span class="buy"></span> | <span class="buy-usd"></span></p>
+                      <span class="number-of-tokens"></span>
+                      <button id="buy-tokens" class="btn btn-success btn-block mb-3">Buy Tokens</button>
+                    </div>
+                    
+                    <div class="col-md-4">
+                      <label class="mb0">Transfer Tokens</label><br>
+                      <p class="text-muted small">Note: 0% Transfer Fee / Auto-Withdraw Divs</p>
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="fas fa-coins"></i></span>
+                        </div>
+                        <input id="transfer-amount" type="number" class="form-control" placeholder="Token Amount">
+                        <div class="input-group-append">
+                          <span class="input-group-text">DVN</span>
+                        </div>
+                      </div>
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="fas fa-wallet"></i></span>
+                        </div>
+                        <input id="transfer-address" type="text" class="form-control" placeholder="Wallet Address">
+                      </div>
+                      <button id="transfer-tokens-btn" class="btn btn-warning btn-block">Transfer Tokens</button>
+                    </div>
+                    <div class="col-md-4">
+                      <label class="mb0">Sell Tokens</label><br>
+                      <p class="text-muted small">Note: 20% Sell Tax + 5% Fund Tax</p>
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="fas fa-coins"></i></span>
+                        </div>
+                        <input id="sell-tokens-amount" type="number" class="form-control" placeholder="Token Amount">
+                        <div class="input-group-append">
+                          <span class="input-group-text">DVN</span>
+                        </div>
+                      </div>
+                      <label class="mb0">Sell Price </label><br>
+                      <p class="text-muted small"><span class="sell"></span> | <span class="sell-usd"></span></p>
+                      <p id="sell-tokens-hint"></p>
+                      <button id="sell-tokens-btn" class="btn btn-danger btn-block mb-3">Sell Tokens</button>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row mt-4">
+                    <div class="col-md-12">
+                      <label class="mb-3">Referral Earnings: (Requires 1 DVN to be Activated)</label>
+                      <div class="input-group">
+                        <span id="reflink"></span>
+                        <!--<input id="reflink" type="text" class="form-control" placeholder="/?masternode=0x12345" readonly>-->
+                        <span class="input-group-btn">
+                                      <!--<button data-copytarget="#quoteDisplay" type="button" class="btn btn-primary" href="#"><i class="fal fa-copy"></i> Copy</button>-->
+                                    </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Interface js -->
+  <!--<script src="./vendor/jquery/jquery.min.js"></script>-->
+  <script src="./vendor/popper.js/popper.min.js"></script>
+  <script src="./vendor/bootstrap/js/bootstrap.min.js"></script>
+  <script src="./js/carbon.js"></script>
+  <!-- EX JS-->
+  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+  <!--<script src="js/main.js"></script>-->
+  <script type="text/javascript" src="js/web3.js"></script>
+  <script type="text/javascript" src="js/alertify.js"></script>
+  <script type="text/javascript" src="js/lightwallet.min.js"></script>
+  <script type="text/javascript" src="js/dividendsnetwork.js?v1.1"></script>
+  <!--<script type="text/javascript" src="js/shapeshift.js"></script>-->
+  <!-- Timer-->
+  <script src="https://momentjs.com/downloads/moment.min.js" type="text/javascript"></script>
+  <script src="https://momentjs.com/downloads/moment-timezone-with-data.min.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.countdown/2.2.0/jquery.countdown.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      var nextYear = moment.tz("2018-10-07 15:00", "America/New_York");
+      $('#counter').countdown(nextYear.toDate(), function(event) {
+        $(this).html(event.strftime('<span>%D <em>days</em></span>' +
+          '<span>%H <em>hours</em></span>' +
+          '<span>%M <em>minutes</em></span>' +
+          '<span>%S <em>seconds</em></span>'));
+
+      });
+    });
+  </script>
+
+  <script>
+    $.ajax({
+
+      url: 'https://api.coinmarketcap.com/v1/ticker/ethereum/',
+      type: 'GET',
+      data: {
+        'numberOfWords': 10
+      },
+      dataType: 'json',
+      success: function(data) {
+        console.log(data);
+      },
+      error: function(request, error) {
+        console.log('Error by getting the ETH price');
+      }
+    });
+  </script>
+</body>
+
+</html>
