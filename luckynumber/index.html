@@ -243,7 +243,7 @@ whenAvailable("web3js", function(){
       <div class="content">
         <div class="container-fluid">
           <div class="d-flex bd-highlight mb-3">
-  <div class="mr-auto p-2 bd-highlight"><h3>The Exchange</h3></div>
+  <div class="mr-auto p-2 bd-highlight"><h3>Lucky Numbers (Lotto) dApp</h3></div>
   <div class="p-2 bd-highlight"><div class="btn-group tform">
   <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background: transparent; color: #777; border: 1px solid #ced4da; text-transform: uppercase;">
     Language
@@ -318,6 +318,30 @@ whenAvailable("web3js", function(){
                 </select>
 </div></div>
 </div>
+
+<div class="row mt-4">
+    <div class="col-md-12">
+        <main class="container text-white">
+            <div class="my-3 px-3 border rounded bg-dark-transparent">
+              <div class="text-center py-2" id="recent-bids">You don't have any recent bids.</div>
+            </div>
+            <div class="my-3 px-3 border rounded bg-dark-transparent">
+              <div class="headline text-center border-bottom py-2">Lucky Number: Buy a lottery ticket to become the leader.</div>
+        <div class="d-flex justify-content-center align-items-center my-2">
+          <div class="badge badge-pill badge-success mr-2">Quick Start</div>
+          <div class="d-flex flex-column small">
+            <div>1. Place a bid (costs 0.1 eth) to try to become leader of all of the pots</div>
+            <div>2. 1/3 of your bid goes to each pot (hour, day, week)</div>
+            <div>3. Each bid gives you a different random number between 1 - 1,000,000 for each pot</div>
+            <div>4. If you manage to get a higher number than the leader of a pot, you become the new leader!</div>
+            <div>5. If you hold leader for the pot length (hour, day, or week), you win half the pot</div>
+          </div>
+        </div>
+        <div class="text-center border-top py-2"><button id="btn-bid" class="btn-success">Click here to try your luck - only 0.1 eth.</button></div>
+            </div>
+      </div>
+    </div>
+  </div>
           <!-- Begin Hour Lotto-->
           <div class="mr-auto p-2 bd-highlight"><h3>Hour Lotto</h3></div>
           <div class="row">
@@ -332,7 +356,7 @@ whenAvailable("web3js", function(){
                     <!--<span class="text-muted small">Est. Value: <span class="value-usd"></span></span>-->
                   </div>
                   <div class="h2 text-muted">
-                    <i class="fas fa-ethereum"></i>
+                    <i class="fab fa-ethereum"></i>
                   </div>
                 </div>
               </div>
@@ -347,7 +371,7 @@ whenAvailable("web3js", function(){
                     <!--<span class="text-muted small">Est. Value: <span class="nonrefdiv-usd"></span></span>-->
                   </div>
                   <div class="h2 text-muted">
-                    <i class="fab fa-trophy"></i>
+                    <i class="fa fa-trophy" aria-hidden="true"></i>
                   </div>
                 </div>
               </div>
@@ -362,7 +386,7 @@ whenAvailable("web3js", function(){
                     <!--<span class="text-muted small">Est. Value: <span class="refdiv-usd"></span></span>-->
                   </div>
                   <div class="h2 text-muted">
-                    <i class="fas fa-star"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
                   </div>
                 </div>
               </div>
@@ -377,7 +401,7 @@ whenAvailable("web3js", function(){
                       <!--<span class="text-muted small">Est. Value: <span class="refdiv-usd"></span></span>-->
                     </div>
                     <div class="h2 text-muted">
-                      <i class="fas fa-clock-o"></i>
+                      <i class="fa fa-clock-o" aria-hidden="true"></i>
                     </div>
                   </div>
                 </div>
@@ -399,7 +423,7 @@ whenAvailable("web3js", function(){
                       <!--<span class="text-muted small">Est. Value: <span class="value-usd"></span></span>-->
                     </div>
                     <div class="h2 text-muted">
-                      <i class="fas fa-ethereum"></i>
+                      <i class="fab fa-ethereum"></i>
                     </div>
                   </div>
                 </div>
@@ -414,7 +438,7 @@ whenAvailable("web3js", function(){
                       <!--<span class="text-muted small">Est. Value: <span class="nonrefdiv-usd"></span></span>-->
                     </div>
                     <div class="h2 text-muted">
-                      <i class="fab fa-trophy"></i>
+                      <i class="fa fa-trophy" aria-hidden="true"></i>
                     </div>
                   </div>
                 </div>
@@ -429,7 +453,7 @@ whenAvailable("web3js", function(){
                       <!--<span class="text-muted small">Est. Value: <span class="refdiv-usd"></span></span>-->
                     </div>
                     <div class="h2 text-muted">
-                      <i class="fas fa-star"></i>
+                      <i class="fa fa-star" aria-hidden="true"></i>
                     </div>
                   </div>
                 </div>
@@ -444,7 +468,7 @@ whenAvailable("web3js", function(){
                         <!--<span class="text-muted small">Est. Value: <span class="refdiv-usd"></span></span>-->
                       </div>
                       <div class="h2 text-muted">
-                        <i class="fas fa-clock-o"></i>
+                        <i class="fa fa-clock-o" aria-hidden="true"></i>
                       </div>
                     </div>
                   </div>
@@ -466,7 +490,7 @@ whenAvailable("web3js", function(){
                       <!--<span class="text-muted small">Est. Value: <span class="value-usd"></span></span>-->
                     </div>
                     <div class="h2 text-muted">
-                      <i class="fas fa-ethereum"></i>
+                      <i class="fab fa-ethereum"></i>
                     </div>
                   </div>
                 </div>
@@ -481,7 +505,7 @@ whenAvailable("web3js", function(){
                       <!--<span class="text-muted small">Est. Value: <span class="nonrefdiv-usd"></span></span>-->
                     </div>
                     <div class="h2 text-muted">
-                      <i class="fab fa-trophy"></i>
+                      <i class="fa fa-trophy" aria-hidden="true"></i>
                     </div>
                   </div>
                 </div>
@@ -496,7 +520,7 @@ whenAvailable("web3js", function(){
                       <!--<span class="text-muted small">Est. Value: <span class="refdiv-usd"></span></span>-->
                     </div>
                     <div class="h2 text-muted">
-                      <i class="fas fa-star"></i>
+                      <i class="fa fa-star" aria-hidden="true"></i>
                     </div>
                   </div>
                 </div>
@@ -511,7 +535,7 @@ whenAvailable("web3js", function(){
                         <!--<span class="text-muted small">Est. Value: <span class="refdiv-usd"></span></span>-->
                       </div>
                       <div class="h2 text-muted">
-                        <i class="fas fa-clock-o"></i>
+                          <i class="fa fa-clock-o" aria-hidden="true"></i>
                       </div>
                     </div>
                   </div>
@@ -535,25 +559,7 @@ whenAvailable("web3js", function(){
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-12">
-              <div class="card">
-                <div class="card-body">
-                  <div class="row mt-2 mb-4">
-                    <div class="col-md-12">
-                      <label class="mb0">Reinvest Or Withdraw Your Divs</label>
-                      <p class="text-muted small">Use <a href="https://ethgasstation.info/">ethgasstation</a> to determine a proper gas amount.</p>
-                      <div class="input-group">
-                        <input type="text" id="input-div" class="form-control" disabled>
-                        <span class="input-group-btn">
-                                              <button id="withdraw-btn" type="button" class="btn btn-danger">Withdraw Divs</button>
-                                          </span>
-                        <span class="input-group-btn">
-                                              <button id="reinvest-btn" type="button" class="btn btn-success">Reinvest Divs</button>
-                                          </span>
-                      </div>
-                    </div>
-                  </div>
+          
                   <hr>
                   <div class="row mt-3">
                     <div class="col-md-4">
@@ -613,18 +619,7 @@ whenAvailable("web3js", function(){
                     </div>
                   </div>
                   <hr>
-                  <div class="row mt-4">
-                    <div class="col-md-12">
-                      <label class="mb-3">Referral Earnings: (Requires 1 DVN to be Activated)</label>
-                      <div class="input-group">
-                        <span id="reflink"></span>
-                        <!--<input id="reflink" type="text" class="form-control" placeholder="/?masternode=0x12345" readonly>-->
-                        <span class="input-group-btn">
-                                      <!--<button data-copytarget="#quoteDisplay" type="button" class="btn btn-primary" href="#"><i class="fal fa-copy"></i> Copy</button>-->
-                                    </span>
-                      </div>
-                    </div>
-                  </div>
+                  
                 </div>
               </div>
             </div>
