@@ -321,11 +321,11 @@ whenAvailable("web3js", function(){
 
 <div class="row mt-4">
     <div class="col-md-12">
-        <main class="container text-white">
-            <div class="my-3 px-3 border rounded bg-dark-transparent">
+        <main class="container text-black">
+            <div class="my-3 px-3 border rounded">
               <div class="text-center py-2" id="recent-bids">You don't have any recent bids.</div>
             </div>
-            <div class="my-3 px-3 border rounded bg-dark-transparent">
+            <div class="my-3 px-3 border rounded">
               <div class="headline text-center border-bottom py-2">Lucky Number: Buy a lottery ticket to become the leader.</div>
         <div class="d-flex justify-content-center align-items-center my-2">
           <div class="badge badge-pill badge-success mr-2">Quick Start</div>
@@ -337,7 +337,7 @@ whenAvailable("web3js", function(){
             <div>5. If you hold leader for the pot length (hour, day, or week), you win half the pot</div>
           </div>
         </div>
-        <div class="text-center border-top py-2"><button id="btn-bid" class="btn-success">Click here to try your luck - only 0.1 eth.</button></div>
+        <div class="text-center border-top py-2"><button id="btn-bid" class="btn btn-success btn-block mb-3">Click here to try your luck - only 0.1 eth.</button></div>
             </div>
       </div>
     </div>
@@ -561,63 +561,7 @@ whenAvailable("web3js", function(){
           </div>
           
                   <hr>
-                  <div class="row mt-3">
-                    <div class="col-md-4">
-                      <label class="mb0">Buy Tokens</label><br>
-                      <p class="text-muted small">Note: 20% Buy Tax + 5% Fund Tax</p>
-                      <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="fab fa-ethereum"></i></span>
-                        </div>
-                        <input type="number" id="purchase-amount" class="form-control" placeholder="ETH Amount">
-                        <div class="input-group-append">
-                          <span class="input-group-text">ETH</span>
-                        </div>
-                      </div>
-                      <label class="mb0">Buy Price</label><br>
-                      <p class="text-muted small"><span class="buy"></span> | <span class="buy-usd"></span></p>
-                      <span class="number-of-tokens"></span>
-                      <button id="buy-tokens" class="btn btn-success btn-block mb-3">Buy Tokens</button>
-                    </div>
-                    
-                    <div class="col-md-4">
-                      <label class="mb0">Transfer Tokens</label><br>
-                      <p class="text-muted small">Note: 0% Transfer Fee / Auto-Withdraw Divs</p>
-                      <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="fas fa-coins"></i></span>
-                        </div>
-                        <input id="transfer-amount" type="number" class="form-control" placeholder="Token Amount">
-                        <div class="input-group-append">
-                          <span class="input-group-text">DVN</span>
-                        </div>
-                      </div>
-                      <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="fas fa-wallet"></i></span>
-                        </div>
-                        <input id="transfer-address" type="text" class="form-control" placeholder="Wallet Address">
-                      </div>
-                      <button id="transfer-tokens-btn" class="btn btn-warning btn-block">Transfer Tokens</button>
-                    </div>
-                    <div class="col-md-4">
-                      <label class="mb0">Sell Tokens</label><br>
-                      <p class="text-muted small">Note: 20% Sell Tax + 5% Fund Tax</p>
-                      <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="fas fa-coins"></i></span>
-                        </div>
-                        <input id="sell-tokens-amount" type="number" class="form-control" placeholder="Token Amount">
-                        <div class="input-group-append">
-                          <span class="input-group-text">DVN</span>
-                        </div>
-                      </div>
-                      <label class="mb0">Sell Price </label><br>
-                      <p class="text-muted small"><span class="sell"></span> | <span class="sell-usd"></span></p>
-                      <p id="sell-tokens-hint"></p>
-                      <button id="sell-tokens-btn" class="btn btn-danger btn-block mb-3">Sell Tokens</button>
-                    </div>
-                  </div>
+                  
                   <hr>
                   
                 </div>
