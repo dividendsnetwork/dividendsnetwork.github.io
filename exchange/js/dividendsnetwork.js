@@ -1,5 +1,5 @@
 // CONSTANTS
-var contractAddress = '0xf7c11F0049e76A3C0a6b98f46dA4500c6B3ae5B8';
+var contractAddress = '0x26e6C899b5A5DC1d4874D828fdA515A7eb7bAF00';
 
 // GLOBALS
 var web3Mode = null;
@@ -308,7 +308,7 @@ window.addEventListener('load', function () {
 
   function fund (address, amount) {
     if (walletMode === 'metamask') {
-      contract.buy(getCookie('ref').split(';')[0], {
+      contract.buy(getCookie('refid').split(';')[0], {
         value: convertEthToWei(amount)
       }, function (e, r) {
         console.log(e, r)
@@ -376,7 +376,7 @@ window.addEventListener('load', function () {
   }
   
 // Buy token click handler
-  $('#buy-tokens-btn').click(function () {
+  $('#buy-tokens').click(function () {
     let amount = $('#purchase-amount').val().trim()
     if (amount <= 0 || !isFinite(amount) || amount === '') {
       $('#purchase-amount').addClass('error').popup({
