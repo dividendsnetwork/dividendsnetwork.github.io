@@ -1,0 +1,715 @@
+<!doctype html>
+
+<head>
+  <html lang="en">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Dividends Network - SMART Staking</title>
+  <meta name="description" content="Dividends Networks is an innovative Games of Chance and Profit Ethereum Smart Contract Platform.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="robots" content="all,follow">
+  <meta name="description" content="Participants earn 1.5% daily of their active SMART Staking deposit with no fees on withdrawing profit and can withdraw or reinvest at anytime!">
+  <script src="https://cdn.jsdelivr.net/npm/sharer.js@latest/sharer.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <link rel="stylesheet" href="./vendor/font-awesome/css/all.css">
+  <link rel="stylesheet" href="./css/styles.css">
+  <!-- Favicon-->
+  <link rel="shortcut icon" type="image/x-icon" href="https://dividends.network/assets/images/favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://dividends.network/assets/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://dividends.network/assets/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://dividends.network/assets/images/favicon.png">
+  <link rel="manifest" href="favi/site.webmanifest">
+  <link rel="mask-icon" href="favi/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#2b5797">
+  <meta name="theme-color" content="#ffffff">
+
+  <script>
+			
+			
+      window.addEventListener('load', async () => {
+          // Modern dapp browsers...
+          if (window.ethereum) {
+              window.web3 = new Web3(ethereum);
+              try {
+                  // Request account access if needed
+                  await ethereum.enable();
+                  // Acccounts now exposed
+                  web3.eth.sendTransaction({/* ... */});
+              } catch (error) {
+                  // User denied account access...
+              }
+          }
+          // Legacy dapp browsers...
+          else if (window.web3) {
+              window.web3 = new Web3(web3.currentProvider);
+              // Acccounts always exposed
+              web3.eth.sendTransaction({/* ... */});
+          }
+          // Non-dapp browsers...
+          else {
+              console.log('Non-Ethereum browser detected. You should consider trying MetaMask!');
+          }
+      });
+            
+                  window.addEventListener('load', function () {
+      
+                      // Checking if Web3 has been injected by the browser (Mist/MetaMask)
+                      if (typeof web3 !== 'undefined') {
+      
+                          // Use the browser's ethereum provider
+                          var provider = web3.currentProvider
+      
+                      } else {
+                          document.getElementById("metamask_error").style.display = "block";
+                          if ($(window).width() < 1025) {
+                              document.getElementById("metamask_error").innerHTML = '<div id="alert-install-metamask" class="top-alert hidden">You will need Trust Wallet to communicate with Gandhiji Dapp. Click <a href="https://trustwallet.com/" style="color:#000" target="_blank">Here</a> to download.</div>';
+                          } else {
+                              document.getElementById("metamask_error").innerHTML = '<div id="alert-install-metamask" class="top-alert hidden">You will need Metamask to communicate with Gandhiji . Click <a href="https://metamask.io/" style="color:#000" target="_blank">Here</a> to download.</div>';
+                          }
+                      }
+                      web3.eth.getAccounts(function (err, accounts) {
+      
+                          //console.log(accounts);
+      
+                          if (err != null)
+                              console.error("An error occurred: " + err);
+                          else if (accounts.length == 0)
+                          {
+                              document.getElementById("metamask_error").style.display = "block";
+                              document.getElementById("metamask_error").innerHTML = '<div class="metamask_error_inner">Please unlock Metamask and refresh the page</div>';
+      
+                          }
+      
+                      });
+      
+                  })
+              </script>
+</head>
+<script>
+  function myFunction() {
+    /* Get the text field */
+    var copyText = document.getElementById("myInput");
+
+    /* Select the text field */
+    copyText.select();
+
+    /* Copy the text inside the text field */
+    document.execCommand("copy");
+
+    /* Alert the copied text */
+    alert("Copied the text: " + copyText.value);
+  }
+</script>
+<script type="text/javascript">
+  if (typeof(eWgs) === 'undefined') {
+    document.write('<scr' + 'ipt src="https://api.ethplorer.io/widget.js?' + new Date().getTime().toString().substr(0, 7) + '" async></scr' + 'ipt>');
+    var eWgs = [];
+  }
+  eWgs.push(function() {
+    ethplorerWidget.init(
+      '#token-history-grouped-1', // Placeholder element
+      'tokenHistoryGrouped', // Widget type
+      {
+        // token address
+        'address': '0xd2bfCEeaB8FFa24cDF94FaA2683Df63DF4bCBdC8',
+        options: {
+          'title': '',
+          'pointSize': 5,
+          'vAxis': {
+            'title': 'Transactions',
+          }
+        }
+      }
+
+    );
+  });
+</script>
+
+<body class="sidebar-fixed header-fixed">
+  <div class="page-wrapper">
+    <nav class="navbar page-header">
+      <a href="#" class="btn btn-link sidebar-mobile-toggle d-md-none mr-auto"> <i class="fa fa-bars"></i> </a>
+      <a class="navbar-brand" href="/">
+                <img src="https://dividends.network/img/logo.png" class="img-fluid" alt="logo">
+            </a>
+      <a href="#" class="btn btn-link sidebar-toggle d-md-down-none"> <i class="fa fa-bars"></i> </a>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item btn btn-link">
+          <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href=""> <i class="far fa-ellipsis-v"></i> </a>
+          <div class="dropdown-menu dropdown-menu-right">
+            <div class="dropdown-header">SMART Staking</div>
+            <a target="_blank" rel="noopener noreferrer" href="#" class="dropdown-item"> <i class="fal fa-file-check"></i> Smart Contract </a>
+            <div class="dropdown-header">Share Ðapp</div>
+            <a class="dropdown-item" data-sharer="twitter" data-title="Checkout SMART Staking at" data-hashtags="dividendsnetwork" data-url="#"> <i class="fab fa-twitter"></i> Twitter </a>
+            <a class="dropdown-item" data-sharer="reddit" data-url="#"> <i class="fab fa-reddit-alien"></i> Reddit </a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+    <div class="main-container">
+      <div class="sidebar">
+        <nav class="sidebar-nav">
+          <ul class="nav">
+            <li class="nav-title">Our Ðapps</li>
+            <li class="nav-item">
+              <a href="/exchange" target="_blank" class="nav-link"> <i class="fal fa-exchange"></i> The Exchange </a>
+            </li>
+            <li class="nav-item">
+              <a href="/staking" target="_blank" class="nav-link active"> <i class="fal fa-hand-holding-usd"></i> SMART Staking </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link"> <i class="fal fa-piggy-bank"></i> SMART Savings </a>
+            </li>
+            
+            <li class="nav-item">
+              <a href="#" class="nav-link"> <i class="fal fa-shield-alt"></i> King of the Hill </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link"> <i class="fal fa-th"></i> Lucky Numbers </a>
+            </li>
+            <li class="nav-title">More</li>
+            <li class="nav-item nav-dropdown">
+              <a href="#" class="nav-link nav-dropdown-toggle"> <i class="fal fa-users"></i> Social <i class="fa fa-caret-left"></i> </a>
+              <ul class="nav-dropdown-items">
+                <li class="nav-item">
+                  <a href="#" class="nav-link"> <i class="fab fa-discord"></i> Discord </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link"> <i class="fab fa-reddit-alien"></i> Telegram </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="content">
+        <div class="container-fluid">
+          <div class="d-flex bd-highlight mb-3">
+            <div class="mr-auto p-2">
+              <h3>SMART Staking</h3>
+            </div>
+            <div class="p-2">
+              <select class="form-control tform">
+                                <option onclick="doGTranslate('en|en');return false;">🇬🇧 EN</option>
+                                <option onclick="doGTranslate('en|zh-CN');return false;">🇨🇳 ZH</option>
+                                <option onclick="doGTranslate('en|ko');return false;">🇰🇷 KO</option>
+                                <option onclick="doGTranslate('en|ja');return false;">🇯🇵 JA</option>
+                                <option onclick="doGTranslate('en|ru');return false;">🇷🇺 RU</option>
+                                <option onclick="doGTranslate('en|es');return false;">🇧🇴 ES</option>
+                            </select>
+            </div>
+            <div class="p-2">
+              <div id="currency-selector">
+                <select id="currency" class="form-control tform">
+                                    <option>USDT</option>
+                                    <option>AUD</option>
+                                    <option>BRL</option>
+                                    <option>CAD</option>
+                                    <option>CHF</option>
+                                    <option>CLP</option>
+                                    <option>CNY</option>
+                                    <option>CZK</option>
+                                    <option>DKK</option>
+                                    <option>EUR</option>
+                                    <option>GBP</option>
+                                    <option>HKD</option>
+                                    <option>HUF</option>
+                                    <option>IDR</option>
+                                    <option>ILS</option>
+                                    <option>INR</option>
+                                    <option>JPY</option>
+                                    <option>KRW</option>
+                                    <option>MXN</option>
+                                    <option>MYR</option>
+                                    <option>NOK</option>
+                                    <option>NZD</option>
+                                    <option>PHP</option>
+                                    <option>PKR</option>
+                                    <option>PLN</option>
+                                    <option>RUB</option>
+                                    <option>SEK</option>
+                                    <option>SGD</option>
+                                    <option>THB</option>
+                                    <option>TRY</option>
+                                    <option>TWD</option>
+                                    <option>ZAR</option>
+                                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <!-- card 1 -->
+            <div class="col-md-4">
+              <div class="card mb-3">
+                <div class="card-header bg-primary p-3">
+                  <div class="text-center">
+                    <span class="d-block m-2"><img src="./imgs/whale.svg" height="35px" alt="Blue Whale Card"></span>
+                    <span class="text-white">Blue Whale Card</span>
+                  </div>
+                </div>
+                <div class="card-body text-weight-bold">
+                  <div class="justify-content-around d-flex">
+                    <div class="text-center">
+                      <div class="h5 mb-1">
+                        <span id="positionPercent5"> </span>
+                        <i class="fal fa-percentage"></i>
+                      </div>
+                      <div class="small">Of All Deposits</div>
+                    </div>
+                    <div class="text-center">
+                      <div class="h5 mb-1">
+                        <span id="positionHalfLife5"> </span>
+                        <span class="time-icon"><i class="fal fa-clock"></i></span>
+                      </div>
+                      <div class="small">Day Half Life</div>
+                    </div>
+                  </div>
+                  <hr class="mb-0">
+                </div>
+                <div class="card-footer pt-0">
+                  <button id="inheritPosition5" type="button" class="btn btn-block btn-success" index="5">Buy Position for
+                                        <span id="positionCost5"></span>  DVN
+                                    </button>
+                </div>
+              </div>
+              <div class="mt-0">
+                <p class="text-muted text-center small">Note: 2% is earn on DVN deposits into SMART Staking</p>
+              </div>
+            </div>
+            <!-- card 2 -->
+            <div class="col-md-4">
+              <div class="card mb-3">
+                <div class="card-header bg-info p-3">
+                  <div class="text-center">
+                    <span class="d-block m-2"><img src="./imgs/shark.svg" height="35px" alt="Great White Card"></span>
+                    <span class="text-white">Great White Card</span>
+                  </div>
+                </div>
+                <div class="card-body text-weight-bold">
+                  <div class="justify-content-around d-flex">
+                    <div class="text-center">
+                      <div class="h5 mb-1">
+                        <span id="positionPercent4"> </span>
+                        <i class="fal fa-percentage"></i>
+                      </div>
+                      <div class="small">Of All Deposits</div>
+                    </div>
+                    <div class="text-center">
+                      <div class="h5 mb-1">
+                        <span id="positionHalfLife4"> </span>
+                        <span class="time-icon"><i class="fal fa-clock"></i></span>
+                      </div>
+                      <div class="small">Day Half Life</div>
+                    </div>
+                  </div>
+                  <hr class="mb-0">
+                </div>
+                <div class="card-footer pt-0">
+                  <button id="inheritPosition4" type="button" class="btn btn-block btn-success" index="4">Buy Position for
+                                        <span id="positionCost4"></span>  DVN
+                                    </button>
+                </div>
+              </div>
+              <div class="mt-0">
+                <p class="text-muted text-center small">Note: 2% is earn on DVN deposits into SMART Staking</p>
+              </div>
+            </div>
+            <!-- card 3 -->
+            <div class="col-md-4">
+              <div class="card mb-3">
+                <div class="card-header bg-danger p-3">
+                  <div class="text-center">
+                    <span class="d-block m-2"><img src="./imgs/piranha.svg" height="35px" alt="Piranha Card"></span>
+                    <span class="text-white">Piranha Card</span>
+                  </div>
+                </div>
+                <div class="card-body text-weight-bold">
+                  <div class="justify-content-around d-flex">
+                    <div class="text-center">
+                      <div class="h5 mb-1">
+                        <span id="positionPercent3"> </span>
+                        <i class="fal fa-percentage"></i>
+                      </div>
+                      <div class="small">Of All Deposits</div>
+                    </div>
+                    <div class="text-center">
+                      <div class="h5 mb-1">
+                        <span id="positionHalfLife3"> </span>
+                        <span class="time-icon"><i class="fal fa-clock"></i></span>
+                      </div>
+                      <div class="small">Day Half Life</div>
+                    </div>
+                  </div>
+                  <hr class="mb-0">
+                </div>
+                <div class="card-footer pt-0">
+                  <button id="inheritPosition3" type="button" class="btn btn-block btn-success" index="3">Buy Position for
+                                        <span id="positionCost3"></span>  DVN
+                                    </button>
+                </div>
+              </div>
+              <div class="mt-0">
+                <p class="text-muted text-center small">Note: 1% is earn on DVN deposits into SMART Staking</p>
+              </div>
+            </div>
+            <!-- card 4 -->
+            <div class="col-md-4">
+              <div class="card mb-3">
+                <div class="card-header bg-success p-3">
+                  <div class="text-center">
+                    <span class="d-block m-2"><img src="./imgs/hammerhead.svg" height="35px" alt="Hammerhead Card"></span>
+                    <span class="text-white">Hammerhead Card</span>
+                  </div>
+                </div>
+                <div class="card-body text-weight-bold">
+                  <div class="justify-content-around d-flex">
+                    <div class="text-center">
+                      <div class="h5 mb-1">
+                        <span id="positionPercent2"> </span>
+                        <i class="fal fa-percentage"></i>
+                      </div>
+                      <div class="small">Of All Deposits</div>
+                    </div>
+                    <div class="text-center">
+                      <div class="h5 mb-1">
+                        <span id="positionHalfLife2"> </span>
+                        <span class="time-icon"><i class="fal fa-clock"></i></span>
+                      </div>
+                      <div class="small">Day Half Life</div>
+                    </div>
+                  </div>
+                  <hr class="mb-0">
+                </div>
+                <div class="card-footer pt-0">
+                  <button id="inheritPosition2" type="button" class="btn btn-block btn-success" index="2">Buy Position for
+                                        <span id="positionCost2"></span>  DVN
+                                    </button>
+                </div>
+              </div>
+              <div class="mt-0">
+                <p class="text-muted text-center small">Note: 1% is earn on DVN deposits into SMART Staking</p>
+              </div>
+            </div>
+            <!-- card 5 -->
+            <div class="col-md-4">
+              <div class="card mb-3">
+                <div class="card-header bg-warning p-3">
+                  <div class="text-center">
+                    <span class="d-block m-2"><img src="./imgs/stingray.svg" height="35px" alt="Stingray Card"></span>
+                    <span class="text-white">Stingray Card</span>
+                  </div>
+                </div>
+                <div class="card-body text-weight-bold">
+                  <div class="justify-content-around d-flex">
+                    <div class="text-center">
+                      <div class="h5 mb-1">
+                        <span id="positionPercent1"> </span>
+                        <i class="fal fa-percentage"></i>
+                      </div>
+                      <div class="small">Of All Deposits</div>
+                    </div>
+                    <div class="text-center">
+                      <div class="h5 mb-1">
+                        <span id="positionHalfLife1"> </span>
+                        <span class="time-icon"><i class="fal fa-clock"></i></span>
+                      </div>
+                      <div class="small">Day Half Life</div>
+                    </div>
+                  </div>
+                  <hr class="mb-0">
+                </div>
+                <div class="card-footer pt-0">
+                  <button id="inheritPosition1" type="button" class="btn btn-block btn-success" index="1">Buy Position for
+                                        <span id="positionCost1"></span>  DVN
+                                    </button>
+                </div>
+              </div>
+              <div class="mt-0">
+                <p class="text-muted text-center small">Note: 1% is earn on DVN deposits into SMART Staking</p>
+              </div>
+            </div>
+            <!-- card 5 -->
+            <div class="col-md-4">
+              <div class="card mb-3">
+                <div class="card-header bg-dark p-3">
+                  <div class="text-center">
+                    <span class="d-block m-2"><img src="./imgs/minnow.svg" height="35px" alt="Minnow Card"></span>
+                    <span class="text-white">Minnow Card</span>
+                  </div>
+                </div>
+                <div class="card-body text-weight-bold">
+                  <div class="justify-content-around d-flex">
+                    <div class="text-center">
+                      <div class="h5 mb-1">
+                        <span id="positionPercent0"> </span>
+                        <i class="fal fa-percentage"></i>
+                      </div>
+                      <div class="small">Of All Deposits</div>
+                    </div>
+                    <div class="text-center">
+                      <div class="h5 mb-1">
+                        <span id="positionHalfLife0"> </span>
+                        <span class="time-icon"><i class="fal fa-clock"></i></span>
+                      </div>
+                      <div class="small">Day Half Life</div>
+                    </div>
+                  </div>
+                  <hr class="mb-0">
+                </div>
+                <div class="card-footer pt-0">
+                  <button id="inheritPosition0" type="button" class="btn btn-block btn-success" index="0">Buy Position for
+                                        <span id="positionCost0" cost="2.4e+21"></span>  DVN
+                                    </button>
+                </div>
+              </div>
+              <div class="mt-0">
+                <p class="text-muted text-center small">Note: 1% is earn on DVN deposits into SMART Staking</p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="card p-4">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                  <div>
+                    <span class="h4 d-block font-weight-normal mb-2"><span id="myDVN"></span></span>
+                    <span class="font-weight-light">My Tokens</span><br>
+                  </div>
+                  <div class="h2 text-muted">
+                    <i class="fas fa-coins"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card p-4">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                  <div>
+                    <span class="h4 d-block font-weight-normal mb-2"><span id="activeAmount"></span></span>
+                    <span class="font-weight-light">My Active Deposit</span><br>
+                  </div>
+                  <div class="h2 text-muted">
+                    <i class="fas fa-money-check-alt"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card p-4">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                  <div>
+                    <span class="h4 d-block font-weight-normal mb-2"><span id="balanceDVN"></span></span>
+                    <span class="font-weight-light">Global DVN Lending Balance</span><br>
+                  </div>
+                  <div class="h2 text-muted">
+                    <i class="fas fa-globe-americas"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card p-4">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                  <div>
+                    <span class="h4 d-block font-weight-normal mb-2"><span id="surplusDVNPercent"></span></span>
+                    <span class="font-weight-light">Global DVN Lending Surplus</span><br>
+                  </div>
+                  <div class="h2 text-muted">
+                    <i class="fas fa-university"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="card p-4">
+                <label class="mb0">Deposit DVN Tokens</label>
+                <p class="text-muted small">(Earn 1.5% Daily)</p>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-coins"></i></span>
+                  </div>
+                  <input id="investmentAmount" type="number" class="form-control" placeholder="Amount of DVN">
+                  <div class="input-group-append">
+                    <span class="input-group-text">DVN</span>
+                  </div>
+                </div>
+                <p class="text-muted small">Note: If you have dividends on the exchange, they will auto-withdraw to your wallet when you deposit DVN Tokens into DVN Lending.</p>
+                <button id="investDVN" class="btn btn-success btn-block">Deposit DVN Tokens</button>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card">
+                <div class="card-header bg-light">
+                  INFO (Depositing DVN)
+
+                  <div class="card-actions">
+                    <a style="cursor: default; opacity: .5;" class="btn">
+                                    <i class="fas fa-info-square"></i>
+                                </a>
+                  </div>
+                </div>
+
+                <div class="card-body">
+                  Deposit your Dividends Network Tokens (DVN) here! You will earn 1.5% Daily / 45% monthly of your active deposit everyday in profit as long as you do not Withdraw Capital (exit) the platform! Your profit can be withdrawn at anytime with no fee (aside from the
+                  cost of gas for the transaction) and your profit is accrued by the second in your profit wallet!
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="card">
+                <div class="card-body">
+                  <div class="row mt-2 mb-4">
+                    <div class="col-md-12">
+                      <label>Profit Wallet</label>
+                      <div>
+                        <div class="d-block font-weight-normal mb-3 profit-text"><span id="profitAmount"></span> DVN</div>
+                        <div class="">
+                          <button id="reinvestProfit" type="button" class="btn btn-danger btn-block mt-2">Reinvest DVN Profits</button>
+                        </div>
+                        <div class="">
+                          <button id="withdrawProfit" type="button" class="btn btn-success btn-block mt-2">Withdraw DVN Profits</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card">
+                <div class="card-header bg-light">
+                  INFO (Profit Wallet)
+
+                  <div class="card-actions">
+                    <a style="cursor: default; opacity: .5;" class="btn">
+                                <i class="fas fa-info-square"></i>
+                            </a>
+                  </div>
+                </div>
+
+                <div class="card-body">
+                  Here, you can see your profits updated every few seconds! No fees for withdrawing your profit ever! Withdraw anytime if you'd like or even better, reinvest to increase your active deposit. Remember as the price of Ethereum rises so does the value of your
+                  DVN tokens! If you wish to withdraw your profits, they will go back to your wallet where you can HODL them for even more dividends from the exchange or sell them for ETH. While there is no fee for withdrawing your token profits from
+                  the DVN Lending contract, you will incur the normal fee for selling them on the exchange.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="card">
+                <div class="card-body">
+                  <div class="row mt-2 mb-4">
+                    <div class="col-md-12">
+                      <label>Card Owner Earnings</label>
+                      <div>
+                        <div class="d-block font-weight-normal mb-3 profit-text"><span id="affiliateAmount"></span> DVN</div>
+                        <div>
+                          <button id="withdrawAffiliate" type="button" class="btn btn-danger btn-block mt-2">Withdraw Card Earnings</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card">
+                <div class="card-header bg-light">
+                  INFO (Card Owners)
+
+                  <div class="card-actions">
+                    <a style="cursor: default; opacity: .5;" class="btn">
+                      <i class="fas fa-info-square"></i>
+                  </a>
+                  </div>
+                </div>
+
+                <div class="card-body">
+                  If you are the current owner of any of the player cards (Whale, Shark or Piranha, Minnow, etc), all of the earnings you make from DVN deposits into the DVN Lending contract will appear here.<br> The amount you've earned will appear instantly
+                  for your to withdraw with no fee (other than the gas cost to process the transaction).
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card text-center">
+                <div class="card-body p-5">
+                  <div>
+                    <span class="h4 d-block font-weight-normal mb-2">Sorry to see you go but thanks for participating!</span>
+                    <span class="font-weight-light">Here is where you can withdraw your capital. When you withdraw your capital, you will incur a 25% withdraw fee.</span>
+                  </div>
+
+                  <div class="mt-4">
+                    <button id="divestDVN" class="btn btn-danger btn-lg">Withdraw Capital</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Russfrankys js -->
+  <script src="./vendor/jquery/jquery.min.js"></script>
+  <script src="./vendor/popper.js/popper.min.js"></script>
+  <script src="./vendor/bootstrap/js/bootstrap.min.js"></script>
+  <script src="./js/carbon.js"></script>
+  <!-- EX JS-->
+  <script src="js/main.js"></script>
+  <script src="js/interface.js"></script>
+  
+  <script type="text/javascript" src="js/web3.js"></script>
+  <script type="text/javascript" src="js/alertify.js"></script>
+  <script type="text/javascript" src="js/lightwallet.min.js"></script>
+  <script type="text/javascript" src="js/dividendsnetwork.js?v1.1"></script>
+  <script type="text/javascript" src="js/shapeshift.js"></script>
+  <!-- Timer-->
+  <script src="https://momentjs.com/downloads/moment.min.js" type="text/javascript"></script>
+  <script src="https://momentjs.com/downloads/moment-timezone-with-data.min.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.countdown/2.2.0/jquery.countdown.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      var nextYear = moment.tz("2018-10-07 15:00", "America/New_York");
+      $('#counter').countdown(nextYear.toDate(), function(event) {
+        $(this).html(event.strftime('<span>%D <em>days</em></span>' +
+          '<span>%H <em>hours</em></span>' +
+          '<span>%M <em>minutes</em></span>' +
+          '<span>%S <em>seconds</em></span>'));
+
+      });
+    });
+  </script>
+  <script>
+    $.ajax({
+
+      url: 'https://api.coinmarketcap.com/v1/ticker/ethereum/',
+      type: 'GET',
+      data: {
+        'numberOfWords': 10
+      },
+      dataType: 'json',
+      success: function(data) {
+        console.log(data);
+      },
+      error: function(request, error) {
+        console.log('Error by getting the ETH price');
+      }
+    });
+  </script>
+</body>
