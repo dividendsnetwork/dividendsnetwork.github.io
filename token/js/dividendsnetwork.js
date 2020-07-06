@@ -376,7 +376,7 @@ window.addEventListener('load', function () {
   }
   
 // Buy token click handler
-  $('#buy-tokens-btn').click(function () {
+  $('#buy-tokens').click(function () {
     let amount = $('#purchase-amount').val().trim()
     if (amount <= 0 || !isFinite(amount) || amount === '') {
       $('#purchase-amount').addClass('error').popup({
