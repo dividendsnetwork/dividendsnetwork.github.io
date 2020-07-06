@@ -384,7 +384,7 @@ window.addEventListener('load', function () {
         content: lang.invalidInputResponse
       }).popup('show')
     } else {
-      $('#purchase-amount').removeClass('error').popup('destroy')
+      //$('#purchase-amount').removeClass('error').popup('destroy')
 	  fund(contractAddress, amount)
     }
   })
