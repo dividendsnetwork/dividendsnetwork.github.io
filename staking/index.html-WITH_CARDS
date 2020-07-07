@@ -256,7 +256,236 @@
             </div>
           </div>
           <!-- Begin Staking Dividend Cards -->
-          
+          <div class="row">
+            <!-- card 1 -->
+            <div class="col-md-4">
+              <div class="card mb-3">
+                <div class="card-header bg-primary p-3">
+                  <div class="text-center">
+                    <span class="d-block m-2"><img src="./imgs/whale.svg" height="35px" alt="Blue Whale Card"></span>
+                    <span class="text-white">Blue Whale Card</span>
+                  </div>
+                </div>
+                <div class="card-body text-weight-bold">
+                  <div class="justify-content-around d-flex">
+                    <div class="text-center">
+                      <div class="h5 mb-1">
+                        <span id="positionPercent5"> </span>
+                        <i class="fal fa-percentage"></i>
+                      </div>
+                      <div class="small">Of All Deposits</div>
+                    </div>
+                    <div class="text-center">
+                      <div class="h5 mb-1">
+                        <span id="positionHalfLife5"> </span>
+                        <span class="time-icon"><i class="fal fa-clock"></i></span>
+                      </div>
+                      <div class="small">Day Half Life</div>
+                    </div>
+                  </div>
+                  <hr class="mb-0">
+                </div>
+                <div class="card-footer pt-0">
+                  <button id="inheritPosition5" type="button" class="btn btn-block btn-success" index="5">Buy Position for
+                                        <span id="positionCost5"></span>  DVN
+                                    </button>
+                </div>
+              </div>
+              <div class="mt-0">
+                <p class="text-muted text-center small">Note: 2% is earn on DVN deposits into SMART Staking</p>
+              </div>
+            </div>
+            <!-- card 2 -->
+            <div class="col-md-4">
+              <div class="card mb-3">
+                <div class="card-header bg-info p-3">
+                  <div class="text-center">
+                    <span class="d-block m-2"><img src="./imgs/shark.svg" height="35px" alt="Great White Card"></span>
+                    <span class="text-white">Great White Card</span>
+                  </div>
+                </div>
+                <div class="card-body text-weight-bold">
+                  <div class="justify-content-around d-flex">
+                    <div class="text-center">
+                      <div class="h5 mb-1">
+                        <span id="positionPercent4"> </span>
+                        <i class="fal fa-percentage"></i>
+                      </div>
+                      <div class="small">Of All Deposits</div>
+                    </div>
+                    <div class="text-center">
+                      <div class="h5 mb-1">
+                        <span id="positionHalfLife4"> </span>
+                        <span class="time-icon"><i class="fal fa-clock"></i></span>
+                      </div>
+                      <div class="small">Day Half Life</div>
+                    </div>
+                  </div>
+                  <hr class="mb-0">
+                </div>
+                <div class="card-footer pt-0">
+                  <button id="inheritPosition4" type="button" class="btn btn-block btn-success" index="4">Buy Position for
+                                        <span id="positionCost4"></span>  DVN
+                                    </button>
+                </div>
+              </div>
+              <div class="mt-0">
+                <p class="text-muted text-center small">Note: 2% is earn on DVN deposits into SMART Staking</p>
+              </div>
+            </div>
+            <!-- card 3 -->
+            <div class="col-md-4">
+              <div class="card mb-3">
+                <div class="card-header bg-danger p-3">
+                  <div class="text-center">
+                    <span class="d-block m-2"><img src="./imgs/piranha.svg" height="35px" alt="Piranha Card"></span>
+                    <span class="text-white">Piranha Card</span>
+                  </div>
+                </div>
+                <div class="card-body text-weight-bold">
+                  <div class="justify-content-around d-flex">
+                    <div class="text-center">
+                      <div class="h5 mb-1">
+                        <span id="positionPercent3"> </span>
+                        <i class="fal fa-percentage"></i>
+                      </div>
+                      <div class="small">Of All Deposits</div>
+                    </div>
+                    <div class="text-center">
+                      <div class="h5 mb-1">
+                        <span id="positionHalfLife3"> </span>
+                        <span class="time-icon"><i class="fal fa-clock"></i></span>
+                      </div>
+                      <div class="small">Day Half Life</div>
+                    </div>
+                  </div>
+                  <hr class="mb-0">
+                </div>
+                <div class="card-footer pt-0">
+                  <button id="inheritPosition3" type="button" class="btn btn-block btn-success" index="3">Buy Position for
+                                        <span id="positionCost3"></span>  DVN
+                                    </button>
+                </div>
+              </div>
+              <div class="mt-0">
+                <p class="text-muted text-center small">Note: 1% is earn on DVN deposits into SMART Staking</p>
+              </div>
+            </div>
+            <!-- card 4 -->
+            <div class="col-md-4">
+              <div class="card mb-3">
+                <div class="card-header bg-success p-3">
+                  <div class="text-center">
+                    <span class="d-block m-2"><img src="./imgs/hammerhead.svg" height="35px" alt="Hammerhead Card"></span>
+                    <span class="text-white">Hammerhead Card</span>
+                  </div>
+                </div>
+                <div class="card-body text-weight-bold">
+                  <div class="justify-content-around d-flex">
+                    <div class="text-center">
+                      <div class="h5 mb-1">
+                        <span id="positionPercent2"> </span>
+                        <i class="fal fa-percentage"></i>
+                      </div>
+                      <div class="small">Of All Deposits</div>
+                    </div>
+                    <div class="text-center">
+                      <div class="h5 mb-1">
+                        <span id="positionHalfLife2"> </span>
+                        <span class="time-icon"><i class="fal fa-clock"></i></span>
+                      </div>
+                      <div class="small">Day Half Life</div>
+                    </div>
+                  </div>
+                  <hr class="mb-0">
+                </div>
+                <div class="card-footer pt-0">
+                  <button id="inheritPosition2" type="button" class="btn btn-block btn-success" index="2">Buy Position for
+                                        <span id="positionCost2"></span>  DVN
+                                    </button>
+                </div>
+              </div>
+              <div class="mt-0">
+                <p class="text-muted text-center small">Note: 1% is earn on DVN deposits into SMART Staking</p>
+              </div>
+            </div>
+            <!-- card 5 -->
+            <div class="col-md-4">
+              <div class="card mb-3">
+                <div class="card-header bg-warning p-3">
+                  <div class="text-center">
+                    <span class="d-block m-2"><img src="./imgs/stingray.svg" height="35px" alt="Stingray Card"></span>
+                    <span class="text-white">Stingray Card</span>
+                  </div>
+                </div>
+                <div class="card-body text-weight-bold">
+                  <div class="justify-content-around d-flex">
+                    <div class="text-center">
+                      <div class="h5 mb-1">
+                        <span id="positionPercent1"> </span>
+                        <i class="fal fa-percentage"></i>
+                      </div>
+                      <div class="small">Of All Deposits</div>
+                    </div>
+                    <div class="text-center">
+                      <div class="h5 mb-1">
+                        <span id="positionHalfLife1"> </span>
+                        <span class="time-icon"><i class="fal fa-clock"></i></span>
+                      </div>
+                      <div class="small">Day Half Life</div>
+                    </div>
+                  </div>
+                  <hr class="mb-0">
+                </div>
+                <div class="card-footer pt-0">
+                  <button id="inheritPosition1" type="button" class="btn btn-block btn-success" index="1">Buy Position for
+                                        <span id="positionCost1"></span>  DVN
+                                    </button>
+                </div>
+              </div>
+              <div class="mt-0">
+                <p class="text-muted text-center small">Note: 1% is earn on DVN deposits into SMART Staking</p>
+              </div>
+            </div>
+            <!-- card 6 -->
+            <div class="col-md-4">
+              <div class="card mb-3">
+                <div class="card-header bg-dark p-3">
+                  <div class="text-center">
+                    <span class="d-block m-2"><img src="./imgs/minnow.svg" height="35px" alt="Minnow Card"></span>
+                    <span class="text-white">Minnow Card</span>
+                  </div>
+                </div>
+                <div class="card-body text-weight-bold">
+                  <div class="justify-content-around d-flex">
+                    <div class="text-center">
+                      <div class="h5 mb-1">
+                        <span id="positionPercent0"> </span>
+                        <i class="fal fa-percentage"></i>
+                      </div>
+                      <div class="small">Of All Deposits</div>
+                    </div>
+                    <div class="text-center">
+                      <div class="h5 mb-1">
+                        <span id="positionHalfLife0"> </span>
+                        <span class="time-icon"><i class="fal fa-clock"></i></span>
+                      </div>
+                      <div class="small">Day Half Life</div>
+                    </div>
+                  </div>
+                  <hr class="mb-0">
+                </div>
+                <div class="card-footer pt-0">
+                  <button id="inheritPosition0" type="button" class="btn btn-block btn-success" index="0">Buy Position for
+                                        <span id="positionCost0" cost="2.4e+21"></span>  DVN
+                                    </button>
+                </div>
+              </div>
+              <div class="mt-0">
+                <p class="text-muted text-center small">Note: 1% is earn on DVN deposits into SMART Staking</p>
+              </div>
+            </div>
+          </div>
           <!-- End Staking Dividend Cards -->
           <div class="row">
             <div class="col-md-6">
