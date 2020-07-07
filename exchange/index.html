@@ -122,6 +122,7 @@
                     max-width: 100% !important;
                     background-blend-mode: darken;
                     background-color: #ffffff;
+                    color: #000000;
                 }
                 #token-txs-11 .txs.big-screen-table td .tx-amount{
                     display: inline-block;
@@ -606,11 +607,11 @@ whenAvailable("web3js", function(){
             '#token-txs-11', // Placeholder element
             'tokenHistory', // Widget type
             {
-                address: '0xe94327d07fc17907b4db788e5adf2ed424addff6', // keep empty to show all tokens
+                address: '0x26e6C899b5A5DC1d4874D828fdA515A7eb7bAF00', // keep empty to show all tokens
                 limit: 5, // Number of records to show
             },
             {
-                header: '<div class="txs-header">WETH Recent Transactions</div>', // customized header
+                header: '<div class="txs-header">Recent Transactions</div>', // customized header
                 loader: '<div class="txs-loading">* L * O * A * D * I * N * G *<br><small>Please wait...</small></div>', // customized loader
                 bigScreenTable: '<tr><td>%from% <span class="tx-send">sent</span> <span class="tx-amount">%amount% %token%</span> <span class="tx-send">to</span> %to% <span class="tx-send">at</span><span class="tx-date"> %datetime%</span></td></tr>'
 
