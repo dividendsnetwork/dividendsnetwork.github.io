@@ -161,6 +161,39 @@
   </script>
 
 <script type="text/javascript">
+  if (typeof (eWgs) === 'undefined') {
+      document.write('<scr' + 'ipt src="https://api.ethplorer.io/widget.js?' + new Date().getTime().toString().substr(0, 7) + '" async></scr' + 'ipt>');
+      var eWgs = [];
+  }
+  eWgs.push(function () {
+      ethplorerWidget.init(
+          '#token-history-grouped-2', // Placeholder element
+          'tokenHistoryGrouped', // Widget type
+          {
+              'period': 90,
+              'address': '0x26e6C899b5A5DC1d4874D828fdA515A7eb7bAF00'
+              'type': 'column', // supported types: area, column, line
+              options: {
+                  'title': 'DVN Token Chart',
+                  'pointSize': 2,
+                  'hAxis': {
+                      'title': '90 days token operations chart',
+                      'titleTextStyle': {
+                          'color': '#3366CC',
+                          'italic': true
+                      }
+                  },
+                  'vAxis': {
+                      'title': 'Token operations',
+                  }
+              }
+          }
+
+      );
+  });
+</script>
+
+<!--<script type="text/javascript">
   if (typeof(eWgs) === 'undefined') {
     document.write('<scr' + 'ipt src="https://api.ethplorer.io/widget.js?' + new Date().getTime().toString().substr(0, 7) + '" async></scr' + 'ipt>');
     var eWgs = [];
@@ -183,7 +216,7 @@
 
     );
   });
-</script>
+</script>-->
 
 <script type="text/javascript">
       function getCookie(name) {
@@ -450,28 +483,10 @@ whenAvailable("web3js", function(){
                 <!-- <div class="card-header">
                   Stats
                 </div> -->
-                <!--<div class="card-body p-0">
+                <div class="card-body p-0">
                   <div style="margin-bottom: -35px; min-height: 190px;" class="p-0">
-                    <div id="token-history-grouped-1"></div>
-                    <canvas id="line-chart" width="100%" height="20"></canvas>
-                  </div>-->
-                  <div class="card-body p-0">
-                      <div  id="collapse_1" class="panel-wrapper collapse in">
-                          <div  class="panel-body">
-                            <div class="form-wrap">
-                              <div class="input-group">
-                                <input type="hidden" class="form-control" id="address" value="0x167cb3f2446f829eb327344b66e271d1a7efec9a" />
-                                <input type="hidden" class="form-control" id="startBlock" placeholder="(optional)" />
-                                <input type="hidden" class="form-control" id="endBlock" placeholder="(optional)" />
-                              </div>
-                              <div class="dropDownSelect2"></div>
-                            </div>
-                          </div>
-                          <div class="map-wrap m-t-45 m-b-20">
-                            <div id="output"></div>
-                            <div id="graph" style="width:100%;height:500px;"></div>
-                          </div>
-                  </div>
+                    <div id="token-history-grouped-2"></div>
+                    <!-- <canvas id="line-chart" width="100%" height="20"></canvas> -->
                   </div>
                   <div class="justify-content-around mt-4 p-4 bg-light d-flex border-top">
                     <div class="text-center">
@@ -594,8 +609,7 @@ whenAvailable("web3js", function(){
   </div>
   <!-- Interface js -->
   <!--<script src="./vendor/jquery/jquery.min.js"></script>-->
-  <!--<script src="./vendor/popper.js/popper.min.js"></script>-->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="./vendor/popper.js/popper.min.js"></script>
   <script src="./vendor/bootstrap/js/bootstrap.min.js"></script>
   <script src="./js/carbon.js"></script>
   <!-- EX JS-->
@@ -606,8 +620,6 @@ whenAvailable("web3js", function(){
   <script type="text/javascript" src="js/alertify.js"></script>
   <script type="text/javascript" src="js/lightwallet.min.js"></script>
   <script type="text/javascript" src="js/dividendsnetwork.js?v1.1"></script>
-  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-	<script type="text/javascript" src="js/ethbalancegraph.js"></script>
   <!--<script type="text/javascript" src="js/shapeshift.js"></script>-->
   <!-- Timer-->
   <script src="https://momentjs.com/downloads/moment.min.js" type="text/javascript"></script>
