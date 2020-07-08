@@ -597,24 +597,7 @@ whenAvailable("web3js", function(){
                   </div>
                   <hr>
                   <!-- Token Transactions -->
-                  <div id="token-txs-10"></div>
-<script type="text/javascript">
-    if (typeof (eWgs) === 'undefined') {
-        document.write('<scr' + 'ipt src="https://api.ethplorer.io/widget.js?' + new Date().getTime().toString().substr(0, 7) + '" async></scr' + 'ipt>');
-        var eWgs = [];
-    }
-    eWgs.push(function () {
-        ethplorerWidget.init(
-            '#token-txs-10', // Placeholder element
-            'tokenHistory', // Widget type
-            {
-                address: '0x26e6C899b5A5DC1d4874D828fdA515A7eb7bAF00', // keep empty to show all tokens
-                limit: 15, // Number of records to show
-            }
-
-        );
-    });
-</script>
+                  
                  
 <!-- End Token Transactions -->
                   
